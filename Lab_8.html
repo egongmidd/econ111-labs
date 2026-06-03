@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Erick Gong">
+<meta name="dcterms.date" content="2026-04-01">
+
+<title>ECON 111 - Lab 8: Hypothesis Testing - t-tests – ECON 0111: Economic Statistics — Lab Materials</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Lab_9.html" rel="next">
+<link href="./Lab_7.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-a8e7d90d93b923d1d9e7241540400d29.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Lab_8.html"><span class="chapter-title">ECON 111 - Lab 8: Hypothesis Testing - t-tests</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">ECON 0111: Economic Statistics — Lab Materials</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 1 : Intro to STATA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 2 : Joint Distributions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 3: Intro to Simulations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 4 : Simulations II</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_5.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 5 : Simulations III</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_6.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 6 : Merging and Maps</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_7.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 7 : Data Cleaning and CI</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_8.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">ECON 111 - Lab 8: Hypothesis Testing - t-tests</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Lab 9: Review</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_10.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 10: Intro to Linear Regression</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_11.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 11: Multivariate Linear Regression</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_12.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 12: Randomization</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_Optional_Reshape.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Optional Lab: Reshaping Data</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#preliminaries" id="toc-preliminaries" class="nav-link active" data-scroll-target="#preliminaries">Preliminaries</a></li>
+  <li><a href="#voting-id-laws" id="toc-voting-id-laws" class="nav-link" data-scroll-target="#voting-id-laws">Voting ID Laws</a></li>
+  <li><a href="#cps-voting-supplement" id="toc-cps-voting-supplement" class="nav-link" data-scroll-target="#cps-voting-supplement">CPS Voting Supplement</a></li>
+  <li><a href="#hypothesis-testing-t-tests" id="toc-hypothesis-testing-t-tests" class="nav-link" data-scroll-target="#hypothesis-testing-t-tests">Hypothesis Testing (t-tests)</a></li>
+  <li><a href="#presenting-hypothesis-test-results" id="toc-presenting-hypothesis-test-results" class="nav-link" data-scroll-target="#presenting-hypothesis-test-results">Presenting Hypothesis Test Results</a>
+  <ul class="collapse">
+  <li><a href="#minor-technicality-.-.-.-." id="toc-minor-technicality-.-.-.-." class="nav-link" data-scroll-target="#minor-technicality-.-.-.-.">Minor technicality . . . .</a></li>
+  </ul></li>
+  <li><a href="#correlation-vs.-causation" id="toc-correlation-vs.-causation" class="nav-link" data-scroll-target="#correlation-vs.-causation">Correlation vs.&nbsp;Causation</a>
+  <ul class="collapse">
+  <li><a href="#balance-table" id="toc-balance-table" class="nav-link" data-scroll-target="#balance-table">Balance Table</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">ECON 111 - Lab 8: Hypothesis Testing - t-tests</span></h1>
+<p class="subtitle lead">Voter ID Laws</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Erick Gong </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 1, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="preliminaries" class="level2">
+<h2 class="anchored" data-anchor-id="preliminaries">Preliminaries</h2>
+<p>Before beginning this lab, make sure you’ve:</p>
+<ul>
+<li><p>Created a folder “Lab 8”</p></li>
+<li><p>Downloaded the necessary data into the folder from the course site</p></li>
+</ul>
+<div id="4c9ec819" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>** Set Path **</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"/Users/egong@middlebury.edu/Library/CloudStorage/Dropbox/Middlebury/Course_Archieve/Spring_2026/ECON_0111/2_Assignments/Labs/Lab_8_ttest_2/"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="voting-id-laws" class="level2">
+<h2 class="anchored" data-anchor-id="voting-id-laws">Voting ID Laws</h2>
+<p>Ballotpedia tracks voter id laws (https://ballotpedia.org/Voter_identification_laws_by_state). Let’s import the excel sheet.</p>
+<div id="8386dc15" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>import excel <span class="st">"voter_id.xlsx"</span>, sheet(<span class="st">"data"</span>) firstrow <span class="kw">clear</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<style>div.jp-Notebook .datagrid-container {min-height: 448px; }</style>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(5 vars, 51 obs)
+
+Contains data
+ Observations:            51                  
+    Variables:             5                  
+-------------------------------------------------------------------------------
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+-------------------------------------------------------------------------------
+state           str20   %20s                  state
+st              str2    %9s                   st
+state_fips      byte    %10.0g                state_fips
+non_photo_id    byte    %10.0g                non_photo_id
+photo_id        byte    %10.0g                photo_id
+-------------------------------------------------------------------------------
+Sorted by: 
+     Note: Dataset has changed since last saved.
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       state |          0
+          st |          0
+  state_fips |         51    28.96078    15.83283          1         56
+non_photo_id |         11           1           0          1          1
+    photo_id |         24           1           0          1          1</code></pre>
+</div>
+</div>
+<p>11 states have laws requiring some form of non-photo id to vote and 24 states require photo id to vote. We first need to clean the variables.</p>
+<section id="q1-predict-what-the-following-code-will-do-and-think-about-why-we-are-doing-it.-then-run-it." class="level4">
+<h4 class="anchored" data-anchor-id="q1-predict-what-the-following-code-will-do-and-think-about-why-we-are-doing-it.-then-run-it.">Q1: Predict what the following code will do and think about why we are doing it. Then run it.</h4>
+<div id="b07fa11c" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> non_photo_id = 0 <span class="kw">if</span>  non_photo_id==.</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">label</span> <span class="kw">var</span> non_photo_id <span class="st">"==1 if id required"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> photo_id = 0 <span class="kw">if</span> photo_id==.</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">label</span> <span class="kw">var</span> photo_id <span class="st">"==1 if photo id required"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">save</span> voter_id.dta, <span class="kw">replace</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(40 real changes made)
+(27 real changes made)
+file voter_id.dta saved</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="cps-voting-supplement" class="level2">
+<h2 class="anchored" data-anchor-id="cps-voting-supplement">CPS Voting Supplement</h2>
+<p>The CPS adds additional questions about voting behavior in their Nov surveys during national election years (Presidential and mid-terms for Congress).</p>
+<p><img src="images/Lab_8/CPS_1.png" class="img-fluid" style="width:30.0%" alt="CPS Voter Supplement"> <img src="images/Lab_8/CPS_2.png" class="img-fluid" style="width:50.0%" alt="Available Years"></p>
+<p>Let’s open the data.</p>
+<div id="2ef10942" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> cps_vote.dta, <span class="kw">clear</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span> voted</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> voted</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+-------------------------------------------------------------------------------
+voted           byte    %8.0g      VOTED      voted for the most recent
+                                                november election
+
+  voted for the |
+    most recent |
+       november |
+       election |      Freq.     Percent        Cum.
+----------------+-----------------------------------
+   did not vote |     47,844       18.83       18.83
+          voted |    106,870       42.05       60.88
+        refused |      2,953        1.16       62.04
+     don't know |      3,271        1.29       63.33
+    no response |     21,605        8.50       71.83
+not in universe |     71,590       28.17      100.00
+----------------+-----------------------------------
+          Total |    254,133      100.00</code></pre>
+</div>
+</div>
+<section id="q2-why-do-you-think-there-are-so-many-individuals-who-are-not-in-universe" class="level4">
+<h4 class="anchored" data-anchor-id="q2-why-do-you-think-there-are-so-many-individuals-who-are-not-in-universe">Q2: Why do you think there are so many individuals who are “not in universe”?</h4>
+<p>Generate an indicator if you voted in the last Nov election if eligible.</p>
+<div id="b96c57f1" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="ot">list</span> VOTED</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> voted_last = 1 <span class="kw">if</span> voted==2</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> voted_last = 0 <span class="kw">if</span> voted==1</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">var</span> voted_last <span class="st">"==1 if voted in Nov election"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>VOTED:
+           1 did not vote
+           2 voted
+          96 refused
+          97 don't know
+          98 no response
+          99 not in universe
+(147,263 missing values generated)
+(47,844 real changes made)</code></pre>
+</div>
+</div>
+<p>We’re going to clean up additional variables by generating multiple indicators.</p>
+</section>
+<section id="q3-review-the-following-code-that-is-used-to-clean-the-dataset-and-generate-new-variables.-predict-what-the-code-will-do-and-the-rationale.-you-can-then-copy-and-paste-it-from-the-do-file-lab_8_clean_cps.-then-run-it." class="level4">
+<h4 class="anchored" data-anchor-id="q3-review-the-following-code-that-is-used-to-clean-the-dataset-and-generate-new-variables.-predict-what-the-code-will-do-and-the-rationale.-you-can-then-copy-and-paste-it-from-the-do-file-lab_8_clean_cps.-then-run-it.">Q3: Review the following code that is used to clean the dataset and generate new variables. Predict what the code will do and the rationale. You can then copy and paste it from the DO file “Lab_8_Clean_CPS”. Then run it.</h4>
+<div id="31ecfe11" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> elderly = 1 <span class="kw">if</span> age&gt;=65 &amp; age&lt;.</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> elderly = 0 <span class="kw">if</span> age&lt;65</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">var</span> elderly <span class="st">"==1 if +65 or older"</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span> sex</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="ot">list</span> SEX</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> female = 1 <span class="kw">if</span> sex==2</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> female = 0 <span class="kw">if</span> sex==1</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span> citizen</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="ot">list</span> CITIZEN</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> citizen_US = 1 <span class="kw">if</span> (citizen&gt;=1 &amp; citizen&lt;=4)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> citizen_US = 0 <span class="kw">if</span> citizen==5</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">var</span> citizen_US <span class="st">"==1 if US Citizen"</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> hourwage2, <span class="kw">detail</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> hourwage2=. <span class="kw">if</span> hourwage2==999.99</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span> educ</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="ot">list</span> EDUC</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> college = 1 <span class="kw">if</span> (educ&gt;=111 &amp; educ&lt;=125)</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> college = 0 <span class="kw">if</span> (educ&gt;=2 &amp; educ&lt;=110)</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">var</span> college <span class="st">"==1 if college degree"</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span> diffany</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="ot">list</span> DIFFANY</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> disability = 1 <span class="kw">if</span> (diffany==2)</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> disability= 0 <span class="kw">if</span> diffany==1</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span> <span class="kw">union</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="ot">list</span> UNION</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> union_mem = 1 <span class="kw">if</span> <span class="kw">union</span>==2</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> union_mem = 0 <span class="kw">if</span> (<span class="kw">union</span>==1 | <span class="kw">union</span>==3)</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span> marst</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="ot">list</span> MARST</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> married = 1 <span class="kw">if</span> (marst==1 | marst==2)</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> married = 0 <span class="kw">if</span> (marst&gt;=3 &amp; marst&lt;=7)</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a><span class="kw">save</span> cps_vote_clean.dta, <span class="kw">replace</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(210,042 missing values generated)
+(210,042 real changes made)
+
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+-------------------------------------------------------------------------------
+sex             byte    %8.0g      SEX        sex
+SEX:
+           1 male
+           2 female
+           9 niu
+(123,518 missing values generated)
+(123,518 real changes made)
+
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+-------------------------------------------------------------------------------
+citizen         byte    %8.0g      CITIZEN    citizenship status
+CITIZEN:
+           1 born in u.s
+           2 born in u.s. outlying
+           3 born abroad of american parents
+           4 naturalized citizen
+           5 not a citizen
+           9 niu
+(14,883 missing values generated)
+(14,883 real changes made)
+
+                    hourly wage (rounded)
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%           10            .05
+ 5%           22            .05
+10%       999.99              1       Obs             254,133
+25%       999.99              1       Sum of wgt.     254,133
+
+50%       999.99                      Mean           936.8897
+                        Largest       Std. dev.      240.8409
+75%       999.99         999.99
+90%       999.99         999.99       Variance       58004.32
+95%       999.99         999.99       Skewness      -3.555246
+99%       999.99         999.99       Kurtosis       13.64162
+(237,807 real changes made, 237,807 to missing)
+
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+-------------------------------------------------------------------------------
+educ            int     %8.0g      EDUC       educational attainment recode
+EDUC:
+           0 niu or no schooling
+           1 niu or blank
+           2 none or preschool
+          10 grades 1, 2, 3, or 4
+          11 grade 1
+          12 grade 2
+          13 grade 3
+          14 grade 4
+          20 grades 5 or 6
+          21 grade 5
+          22 grade 6
+          30 grades 7 or 8
+          31 grade 7
+          32 grade 8
+          40 grade 9
+          50 grade 10
+          60 grade 11
+          70 grade 12
+          71 12th grade, no diploma
+          72 12th grade, diploma unclear
+          73 high school diploma or equivalent
+          80 1 year of college
+          81 some college but no degree
+          90 2 years of college
+          91 associate's degree, occupational/vocational program
+          92 associate's degree, academic program
+         100 3 years of college
+         110 4 years of college
+         111 bachelor's degree
+         120 5+ years of college
+         121 5 years of college
+         122 6+ years of college
+         123 master's degree
+         124 professional school degree
+         125 doctorate degree
+         999 missing/unknown
+(190,404 missing values generated)
+(143,309 real changes made)
+
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+-------------------------------------------------------------------------------
+diffany         byte    %8.0g      DIFFANY    any difficulty
+DIFFANY:
+           0 niu
+           1 no difficulty
+           2 has difficulty
+(228,140 missing values generated)
+(180,133 real changes made)
+
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+-------------------------------------------------------------------------------
+union           byte    %8.0g      UNION      union membership
+UNION:
+           0 niu
+           1 no union coverage
+           2 member of labor union
+           3 covered by union but not a member
+(251,278 missing values generated)
+(24,571 real changes made)
+
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+-------------------------------------------------------------------------------
+marst           byte    %8.0g      MARST      marital status
+MARST:
+           1 married, spouse present
+           2 married, spouse absent
+           3 separated
+           4 divorced
+           5 widowed
+           6 never married/single
+           7 widowed or divorced
+           9 niu
+(146,601 missing values generated)
+(99,506 real changes made)
+file cps_vote_clean.dta saved</code></pre>
+</div>
+</div>
+<p>We can now merge the data with the state-level voter id data.</p>
+<div id="23aa855a" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> cps_vote_clean.dta, <span class="kw">clear</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">rename</span> statefip state_fips</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> <span class="fu">m</span>:1 state_fips <span class="kw">using</span> voter_id</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="dt">_merge</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="kw">save</span> cps_vote_idlaw.dta, <span class="kw">replace</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                           254,133  (_merge==3)
+    -----------------------------------------
+file cps_vote_idlaw.dta saved</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="hypothesis-testing-t-tests" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-testing-t-tests">Hypothesis Testing (t-tests)</h2>
+<p>We can see if there is a difference in voting between states with voter id laws and those without.</p>
+<div id="1a106ea9" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">prtest</span> voted_last, <span class="kw">by</span>(photo_id)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">ttest</span> voted_last, <span class="kw">by</span>(photo_id)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Two-sample test of proportions                     0: Number of obs =    79951
+                                                   1: Number of obs =    74763
+------------------------------------------------------------------------------
+       Group |       Mean   Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+           0 |   .7007042   .0016196                      .6975298    .7038785
+           1 |   .6801225   .0017059                      .6767791    .6834659
+-------------+----------------------------------------------------------------
+        diff |   .0205817   .0023522                      .0159714     .025192
+             |  under H0:   .0023514     8.75   0.000
+------------------------------------------------------------------------------
+        diff = prop(0) - prop(1)                                  z =   8.7530
+    H0: diff = 0
+
+    Ha: diff &lt; 0                 Ha: diff != 0                 Ha: diff &gt; 0
+ Pr(Z &lt; z) = 1.0000         Pr(|Z| &gt; |z|) = 0.0000          Pr(Z &gt; z) = 0.0000
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
+---------+--------------------------------------------------------------------
+       0 |  79,951    .7007042    .0016196    .4579525    .6975298    .7038786
+       1 |  74,763    .6801225    .0017059     .466432     .676779     .683466
+---------+--------------------------------------------------------------------
+Combined | 154,714    .6907584     .001175    .4621824    .6884554    .6930615
+---------+--------------------------------------------------------------------
+    diff |            .0205817    .0023508                .0159741    .0251892
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t =   8.7552
+H0: diff = 0                                     Degrees of freedom =   154712
+
+    Ha: diff &lt; 0                 Ha: diff != 0                 Ha: diff &gt; 0
+ Pr(T &lt; t) = 1.0000         Pr(|T| &gt; |t|) = 0.0000          Pr(T &gt; t) = 0.0000</code></pre>
+</div>
+</div>
+<section id="q4-whats-the-difference-with-the-results-from-prtest-vs-ttest" class="level4">
+<h4 class="anchored" data-anchor-id="q4-whats-the-difference-with-the-results-from-prtest-vs-ttest">Q4: What’s the difference with the results from <code>prtest</code> vs <code>ttest</code>?</h4>
+<p>Now let’s do the same t-test for all 18-year olds (who are just able to vote).</p>
+<div id="2ed790cb" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ttest</span> voted_last <span class="kw">if</span> age==18, <span class="kw">by</span>(photo_id)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
+---------+--------------------------------------------------------------------
+       0 |   1,078    .4350649    .0151067    .4959956    .4054231    .4647068
+       1 |   1,023    .3900293    .0152573    .4879951    .3600901    .4199685
+---------+--------------------------------------------------------------------
+Combined |   2,101    .4131366     .010745    .4925142    .3920647    .4342085
+---------+--------------------------------------------------------------------
+    diff |            .0450356      .02148                .0029113    .0871599
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t =   2.0966
+H0: diff = 0                                     Degrees of freedom =     2099
+
+    Ha: diff &lt; 0                 Ha: diff != 0                 Ha: diff &gt; 0
+ Pr(T &lt; t) = 0.9819         Pr(|T| &gt; |t|) = 0.0361          Pr(T &gt; t) = 0.0181</code></pre>
+</div>
+</div>
+</section>
+<section id="q5-what-is-the-null-and-alternative-hypothesis-what-proportion-of-18-year-olds-vote-in-states-with-voter-id-laws-and-without-what-is-the-test-statistic-and-what-does-it-mean-what-is-the-p-value-and-what-does-it-mean-see-if-you-can-label-the-figure-below." class="level4">
+<h4 class="anchored" data-anchor-id="q5-what-is-the-null-and-alternative-hypothesis-what-proportion-of-18-year-olds-vote-in-states-with-voter-id-laws-and-without-what-is-the-test-statistic-and-what-does-it-mean-what-is-the-p-value-and-what-does-it-mean-see-if-you-can-label-the-figure-below.">Q5: What is the null and alternative hypothesis? What proportion of 18-year olds vote in states with voter id laws and without? What is the test statistic and what does it mean? What is the p-value and what does it mean? See if you can label the figure below.</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Lab_8/pop_sample.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Hyp Test</figcaption>
+</figure>
+</div>
+<p>Finally, let’s compare voting for 18-year olds who live in Delaware (non-photo id state) to those in Rhode Island (photo id state). Note that the state fips for Delaware and Rhode Island is 10 and 44 respectively.</p>
+<div id="510f35bb" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ttest</span> voted_last <span class="kw">if</span> age==18 &amp; (state_fips==44 | state_fips==10) , <span class="kw">by</span>(photo_id)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
+---------+--------------------------------------------------------------------
+       0 |      27    .4444444    .0974509    .5063697    .2441313    .6447576
+       1 |      18    .5555556    .1205169      .51131    .3012871     .809824
+---------+--------------------------------------------------------------------
+Combined |      45    .4888889    .0753592     .505525    .3370124    .6407654
+---------+--------------------------------------------------------------------
+    diff |           -.1111111    .1546795                -.423052    .2008297
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t =  -0.7183
+H0: diff = 0                                     Degrees of freedom =       43
+
+    Ha: diff &lt; 0                 Ha: diff != 0                 Ha: diff &gt; 0
+ Pr(T &lt; t) = 0.2382         Pr(|T| &gt; |t|) = 0.4764          Pr(T &gt; t) = 0.7618</code></pre>
+</div>
+</div>
+</section>
+<section id="q6-how-do-you-interpret-these-results" class="level4">
+<h4 class="anchored" data-anchor-id="q6-how-do-you-interpret-these-results">Q6: How do you interpret these results?</h4>
+</section>
+</section>
+<section id="presenting-hypothesis-test-results" class="level2">
+<h2 class="anchored" data-anchor-id="presenting-hypothesis-test-results">Presenting Hypothesis Test Results</h2>
+<p>The results generated by a t-test are not visually stunning.</p>
+<div id="b5ec9ab2" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ttest</span> voted_last, <span class="kw">by</span>(photo_id)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
+---------+--------------------------------------------------------------------
+       0 |  79,951    .7007042    .0016196    .4579525    .6975298    .7038786
+       1 |  74,763    .6801225    .0017059     .466432     .676779     .683466
+---------+--------------------------------------------------------------------
+Combined | 154,714    .6907584     .001175    .4621824    .6884554    .6930615
+---------+--------------------------------------------------------------------
+    diff |            .0205817    .0023508                .0159741    .0251892
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t =   8.7552
+H0: diff = 0                                     Degrees of freedom =   154712
+
+    Ha: diff &lt; 0                 Ha: diff != 0                 Ha: diff &gt; 0
+ Pr(T &lt; t) = 1.0000         Pr(|T| &gt; |t|) = 0.0000          Pr(T &gt; t) = 0.0000</code></pre>
+</div>
+</div>
+<p>A better way to present these results is in the following code block.</p>
+<section id="q7-can-you-predict-what-will-happen-in-the-following-lines-before-executing-it" class="level4">
+<h4 class="anchored" data-anchor-id="q7-can-you-predict-what-will-happen-in-the-following-lines-before-executing-it">Q7: Can you predict what will happen in the following lines before executing it?</h4>
+<div id="a9b15beb" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ttest</span> voted_last, <span class="kw">by</span>(photo_id)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span> <span class="ot">list</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span> results = <span class="fu">r</span>(mu_1), <span class="fu">r</span>(mu_1)-1.96*(<span class="fu">r</span>(sd_1)/<span class="fu">sqrt</span>(<span class="fu">r</span>(N_1))) , <span class="fu">r</span>(mu_1)+1.96*(<span class="fu">r</span>(sd_1)/<span class="fu">sqrt</span>(<span class="fu">r</span>(N_1)))</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span> results = results \ <span class="fu">r</span>(mu_2), <span class="fu">r</span>(mu_2)-1.96*(<span class="fu">r</span>(sd_2)/<span class="fu">sqrt</span>(<span class="fu">r</span>(N_2))) , <span class="fu">r</span>(mu_2)+1.96*(<span class="fu">r</span>(sd_2)/<span class="fu">sqrt</span>(<span class="fu">r</span>(N_2)))</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span> <span class="ot">colnames</span> results = <span class="kw">mean</span> ll ul</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span> <span class="ot">rownames</span> results = no_photo_id photo_id</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span> <span class="ot">list</span> results</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>coefplot <span class="fu">matrix</span>(results[,1]), <span class="kw">ci</span>((results[,2] results[,3] ))  <span class="co">///</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>vertical <span class="kw">recast</span>(<span class="bn">bar</span>) <span class="bn">barwidth</span>(0.25)  ciopts(<span class="kw">recast</span>(rcap) lcolor(<span class="bn">black</span>)) citop <span class="co">///</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="bn">title</span>(State Voter ID Laws) <span class="bn">subtitle</span>(Voter Turnout) <span class="co">///</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a> <span class="kw">note</span>(<span class="st">"p-value&lt;.01"</span>)</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> <span class="st">"vote_ttest.png"</span>, <span class="kw">replace</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Lab_8/vote_ttest.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Hyp Test</figcaption>
+</figure>
+</div>
+<p>The figure above presents the 95% CI and the footnote reveals the two-tail p-value for the t-test. It is typically a more aesthetic way of presenting a single t-test.</p>
+</section>
+<section id="q8-can-we-say-that-photo-id-laws-are-causing-a-decrease-in-voter-turnout-why-or-why-not" class="level4">
+<h4 class="anchored" data-anchor-id="q8-can-we-say-that-photo-id-laws-are-causing-a-decrease-in-voter-turnout-why-or-why-not">Q8: Can we say that photo id laws are causing a decrease in voter turnout? Why or why not?</h4>
+</section>
+<section id="minor-technicality-.-.-.-." class="level3">
+<h3 class="anchored" data-anchor-id="minor-technicality-.-.-.-.">Minor technicality . . . .</h3>
+<p>When dealing with sample proportions (percentages), we technically should use <code>prtest</code> instead of <code>ttest</code>. Try it and note what differences you find. In practice, we just stick to <code>ttest</code>. Why? We’ll see it come into play in a moment.</p>
+</section>
+</section>
+<section id="correlation-vs.-causation" class="level2">
+<h2 class="anchored" data-anchor-id="correlation-vs.-causation">Correlation vs.&nbsp;Causation</h2>
+<p>Confounders or omitted variables may explain the results. For instance, suppose states with photo id laws also have fewer elderly people AND <a href="https://money.usnews.com/money/retirement/aging/articles/why-older-citizens-are-more-likely-to-vote">elderly people are more likely to vote compared to younger people.</a></p>
+<p>Another confounder might be gender. Perhaps there are fewer women in photo id states AND <a href="https://cawp.rutgers.edu/facts/voters/gender-differences-voter-turnout#GGN">women are more likely to vote than men</a>.</p>
+<p>To assess these confounders, we can do ttests which compares the means for each variable (elderly, female) between states with and without photo id laws. We generate a table with these results and it is commonly known as a “balance table”. The reason? Ideally, we would like all possible confounders to be balanced or similar between the two types of states. This would assuage concerns that the differences are due to these confounders.</p>
+<section id="balance-table" class="level3">
+<h3 class="anchored" data-anchor-id="balance-table">Balance Table</h3>
+<div id="6ca17e85" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ttest</span> elderly, <span class="kw">by</span>(photo_id)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span> <span class="ot">list</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span> balance =  <span class="fu">r</span>(mu_1) , <span class="fu">r</span>(mu_2), <span class="fu">r</span>(mu_2)-<span class="fu">r</span>(mu_1), <span class="fu">r</span>(<span class="kw">p</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> x <span class="kw">of</span> <span class="kw">varlist</span> female citizen_US {</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">ttest</span> <span class="ot">`x'</span> , <span class="kw">by</span>(photo_id)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">matrix</span> balance = balance \ <span class="fu">r</span>(mu_1) , <span class="fu">r</span>(mu_2), <span class="fu">r</span>(mu_2)-<span class="fu">r</span>(mu_1), <span class="fu">r</span>(<span class="kw">p</span>)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span> <span class="ot">colnames</span> balance = no_photo_id photo_id <span class="fu">diff</span> p_val</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span> <span class="ot">rownames</span> balance = elderly female citizen_US</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span> <span class="ot">list</span> balance</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
+---------+--------------------------------------------------------------------
+       0 | 133,787    .1687683     .001024    .3745485    .1667612    .1707753
+       1 | 120,346    .1787513    .0011045    .3831455    .1765866     .180916
+---------+--------------------------------------------------------------------
+Combined | 254,133    .1734958    .0007512     .378676    .1720235     .174968
+---------+--------------------------------------------------------------------
+    diff |            -.009983    .0015043               -.0129314   -.0070346
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t =  -6.6362
+H0: diff = 0                                     Degrees of freedom =   254131
+
+    Ha: diff &lt; 0                 Ha: diff != 0                 Ha: diff &gt; 0
+ Pr(T &lt; t) = 0.0000         Pr(|T| &gt; |t|) = 0.0000          Pr(T &gt; t) = 1.0000
+
+scalars:
+            r(ub_diff) =  -.0070345837832508
+            r(lb_diff) =  -.0129314186259734
+            r(mu_diff) =  -.0099830012046121
+        r(ub_combined) =  .1749680379750318
+        r(lb_combined) =  .1720234979530059
+        r(se_combined) =  .0007511683942087
+        r(mu_combined) =  .1734957679640189
+         r(N_combined) =  254133
+               r(ub_2) =  .1809159803235807
+               r(lb_2) =  .1765865540356835
+               r(se_2) =  .0011044546683087
+               r(ub_1) =  .1707752926151945
+               r(lb_1) =  .1667612393348455
+               r(se_1) =  .001024002735967
+              r(level) =  95
+                 r(sd) =  .378676049832242
+               r(sd_2) =  .3831454964911139
+               r(sd_1) =  .3745485108185696
+                 r(se) =  .0015043150802859
+                r(p_u) =  .999999999983879
+                r(p_l) =  1.61210098313e-11
+                  r(p) =  3.22420196627e-11
+                  r(t) =  -6.636243520682345
+               r(df_t) =  254131
+               r(mu_2) =  .1787512671796321
+                r(N_2) =  120346
+               r(mu_1) =  .16876826597502
+                r(N_1) =  133787
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
+---------+--------------------------------------------------------------------
+       0 | 133,787    .5122845    .0013666    .4998509     .509606    .5149629
+       1 | 120,346    .5158294    .0014406    .4997514    .5130058    .5186529
+---------+--------------------------------------------------------------------
+Combined | 254,133    .5139632    .0009915     .499806    .5120199    .5159064
+---------+--------------------------------------------------------------------
+    diff |           -.0035449    .0019857               -.0074368     .000347
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t =  -1.7852
+H0: diff = 0                                     Degrees of freedom =   254131
+
+    Ha: diff &lt; 0                 Ha: diff != 0                 Ha: diff &gt; 0
+ Pr(T &lt; t) = 0.0371         Pr(|T| &gt; |t|) = 0.0742          Pr(T &gt; t) = 0.9629
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
+---------+--------------------------------------------------------------------
+       0 | 133,787    .9296269    .0006993    .2557756    .9282564    .9309975
+       1 | 120,346    .9545643    .0006003    .2082585    .9533877     .955741
+---------+--------------------------------------------------------------------
+Combined | 254,133    .9414362    .0004658     .234807    .9405233    .9423491
+---------+--------------------------------------------------------------------
+    diff |           -.0249374    .0009316               -.0267632   -.0231116
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t = -26.7697
+H0: diff = 0                                     Degrees of freedom =   254131
+
+    Ha: diff &lt; 0                 Ha: diff != 0                 Ha: diff &gt; 0
+ Pr(T &lt; t) = 0.0000         Pr(|T| &gt; |t|) = 0.0000          Pr(T &gt; t) = 1.0000
+
+balance[3,4]
+            no_photo_id     photo_id         diff        p_val
+   elderly    .16876827    .17875127      .009983    3.224e-11
+    female    .51228445    .51582936    .00354491    .07422302
+citizen_US    .92962694    .95456434     .0249374    1.21e-157</code></pre>
+</div>
+</div>
+<div id="76e70828" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>putexcel <span class="kw">set</span> balance.xlsx, sheet(table_1) <span class="kw">replace</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>     putexcel A1 = <span class="fu">matrix</span>(balance), names</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Lab_8/balance.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Balance Table</figcaption>
+</figure>
+</div>
+<section id="q9-how-do-you-interpret-the-results-of-this-table-what-does-each-row-represent" class="level4">
+<h4 class="anchored" data-anchor-id="q9-how-do-you-interpret-the-results-of-this-table-what-does-each-row-represent">Q9: How do you interpret the results of this table? What does each row represent?</h4>
+</section>
+<section id="q10-based-on-this-balance-table-how-concerned-are-you-about-confoundersomitted-variables-when-examining-the-association-between-photo-id-laws-and-voter-turnout" class="level4">
+<h4 class="anchored" data-anchor-id="q10-based-on-this-balance-table-how-concerned-are-you-about-confoundersomitted-variables-when-examining-the-association-between-photo-id-laws-and-voter-turnout">Q10: Based on this balance table, how concerned are you about confounders/omitted variables when examining the association between photo id laws and voter turnout?</h4>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Lab_7.html" class="pagination-link" aria-label="ECON 111 - Lab 7 : Data Cleaning and CI">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">ECON 111 - Lab 7 : Data Cleaning and CI</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Lab_9.html" class="pagination-link" aria-label="Lab 9: Review">
+        <span class="nav-page-text"><span class="chapter-title">Lab 9: Review</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
