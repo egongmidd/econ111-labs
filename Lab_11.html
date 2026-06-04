@@ -157,6 +157,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./PS_0.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Problem Set 0: Getting Started with STATA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Lab_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 1 : Intro to STATA</span></a>
   </div>
 </li>
@@ -197,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Lab_9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Lab 9: Review</span></a>
+  <a href="./Lab_9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 9 : Review</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -290,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Created a folder “Lab 11”</p></li>
 <li><p>Downloaded the necessary data into the folder from the course site</p></li>
 </ul>
-<div id="27f95f6a" class="cell" data-execution_count="1">
+<div id="7e23e868" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>** Set Path **</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>** Change <span class="kw">this</span> to YOUR Lab 11 folder path **</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"/Users/egong@middlebury.edu/Library/CloudStorage/Dropbox/Middlebury/Course_Archieve/Spring_2026/ECON_0111/2_Assignments/Labs/Lab_11_Multiple_Reg"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -307,7 +312,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="incarceration-rates">Incarceration Rates</h3>
 <p>The Prison Policy Initiative has compiled state by year data from the Bureau of Justice Statistics to track rates of incarceration (number of prisoners per 100K).</p>
 <p>Both of these datasets are already merged so we can go straight to the analysis.</p>
-<div id="14f38d8b" class="cell" data-execution_count="2">
+<div id="d714768f" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> prison_policy.dta, <span class="kw">clear</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <style>div.jp-Notebook .datagrid-container {min-height: 448px; }</style>
@@ -321,7 +326,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="treatment-variable" class="level3">
 <h3 class="anchored" data-anchor-id="treatment-variable">Treatment Variable</h3>
 <p>The variable <code>drug_felony</code> is the treatment variable and takes a value of 1 if a state treats drug possession as a felony offense.</p>
-<div id="c130136f" class="cell" data-execution_count="3">
+<div id="c72f1ab7" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> drug_felony</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -337,7 +342,7 @@ drug_felony |      Freq.     Percent        Cum.
 <section id="outcome-variable" class="level3">
 <h3 class="anchored" data-anchor-id="outcome-variable">Outcome Variable</h3>
 <p>The outcome variable is <code>prison_rate</code> which is the number of prisoners per 100K for each state in a year.</p>
-<div id="a8abba9c" class="cell" data-execution_count="4">
+<div id="99efd5d5" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> prison_rate, <span class="kw">detail</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -361,7 +366,7 @@ drug_felony |      Freq.     Percent        Cum.
 <section id="control-variables" class="level3">
 <h3 class="anchored" data-anchor-id="control-variables">Control Variables</h3>
 <p>We also have control variables from the 2010 US ACS Census, which you will also use for your research project. We’ll use a macro so that we don’t have to keep typing in all the control variables.</p>
-<div id="40e4c617" class="cell" data-execution_count="5">
+<div id="3995c6ac" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">global</span> controls <span class="st">"age elderly female citizen_US college married black asian white employed inctot"</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span> <span class="ot">$controls</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> <span class="ot">$controls</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -404,7 +409,7 @@ inctot          double  %12.0g                Mean Income
 <section id="balance-table" class="level2">
 <h2 class="anchored" data-anchor-id="balance-table">Balance Table</h2>
 <p>We can use the control variables to examine how felony states (treatment) are different compared to non-felony states (control group).</p>
-<div id="1341201d" class="cell" data-execution_count="6">
+<div id="38c98eed" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ttest</span> age, <span class="kw">by</span>(drug_felony)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span> <span class="ot">list</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span> balance =  <span class="fu">r</span>(mu_1) , <span class="fu">r</span>(mu_2), <span class="fu">r</span>(mu_2)-<span class="fu">r</span>(mu_1), <span class="fu">r</span>(<span class="kw">p</span>)</span>
@@ -435,7 +440,7 @@ inctot          double  %12.0g                Mean Income
 <section id="correlation-between-treatment-and-controls" class="level2">
 <h2 class="anchored" data-anchor-id="correlation-between-treatment-and-controls">Correlation between Treatment and Controls</h2>
 <p>An omitted variable/confounder has two properties: 1) it should affect the outcome and 2) it needs to be correlated with the treatment.</p>
-<div id="cdc633ac" class="cell" data-execution_count="7">
+<div id="4c89913b" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>correlate drug_felony age elderly female citizen_US college married <span class="bn">black</span> asian <span class="bn">white</span> employed inctot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(obs=598)
@@ -472,7 +477,7 @@ inctot          double  %12.0g                Mean Income
 <section id="q3-which-control-variables-would-we-most-worry-about-as-omitted-variables-i.e.-which-a-are-correlated-with-drug_felony-and-b-plausibly-affect-prison-rates" class="level4">
 <h4 class="anchored" data-anchor-id="q3-which-control-variables-would-we-most-worry-about-as-omitted-variables-i.e.-which-a-are-correlated-with-drug_felony-and-b-plausibly-affect-prison-rates">Q3: Which control variables would we most worry about as omitted variables — i.e., which (a) are correlated with <code>drug_felony</code> AND (b) plausibly affect prison rates?</h4>
 <p>Let’s examine what happens when we control for the pct of US Citizens in a state.</p>
-<div id="2e9054f4" class="cell" data-execution_count="8">
+<div id="6f013fae" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">reg</span> prison_rate drug_felony</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">reg</span> prison_rate drug_felony citizen_US</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -518,7 +523,7 @@ inctot          double  %12.0g                Mean Income
 <blockquote class="blockquote">
 <p><strong>Note:</strong> The code below uses <code>outreg2</code> to export regression results to Excel. If you haven’t installed it yet, run <code>ssc install outreg2</code> once.</p>
 </blockquote>
-<div id="d582861f" class="cell" data-execution_count="9">
+<div id="dc8a4c0d" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">reg</span> prison_rate drug_felony</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    outreg2 <span class="kw">using</span> reg_results2, <span class="kw">replace</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">reg</span> prison_rate drug_felony citizen_US</span>

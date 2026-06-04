@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Erick Gong">
-<meta name="dcterms.date" content="2026-02-01">
+<meta name="dcterms.date" content="2026-01-01">
 
-<title>ECON 111 - Lab 1 : Intro to STATA – ECON 0111: Economic Statistics — Lab Materials</title>
+<title>Problem Set 0: Getting Started with STATA – ECON 0111: Economic Statistics — Lab Materials</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,53 +25,18 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Lab_2.html" rel="next">
-<link href="./PS_0.html" rel="prev">
+<link href="./Lab_1.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -109,9 +74,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -125,7 +87,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Lab_1.html"><span class="chapter-title">ECON 111 - Lab 1 : Intro to STATA</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./PS_0.html"><span class="chapter-title">Problem Set 0: Getting Started with STATA</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -157,12 +119,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./PS_0.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Problem Set 0: Getting Started with STATA</span></a>
+  <a href="./PS_0.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Problem Set 0: Getting Started with STATA</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Lab_1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">ECON 111 - Lab 1 : Intro to STATA</span></a>
+  <a href="./Lab_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 1 : Intro to STATA</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -235,19 +197,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preliminaries" id="toc-preliminaries" class="nav-link active" data-scroll-target="#preliminaries">Preliminaries</a></li>
-  <li><a href="#intro-to-stata" id="toc-intro-to-stata" class="nav-link" data-scroll-target="#intro-to-stata">Intro to STATA</a></li>
-  <li><a href="#open-and-save-a-do-file" id="toc-open-and-save-a-do-file" class="nav-link" data-scroll-target="#open-and-save-a-do-file">Open and Save a DO file</a></li>
-  <li><a href="#syntax" id="toc-syntax" class="nav-link" data-scroll-target="#syntax">Syntax</a></li>
-  <li><a href="#set-path" id="toc-set-path" class="nav-link" data-scroll-target="#set-path">Set Path</a></li>
-  <li><a href="#open-the-dataset" id="toc-open-the-dataset" class="nav-link" data-scroll-target="#open-the-dataset">Open the dataset</a></li>
-  <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics">Summary Statistics</a></li>
-  <li><a href="#distributions" id="toc-distributions" class="nav-link" data-scroll-target="#distributions">Distributions</a></li>
-  <li><a href="#generating-variables" id="toc-generating-variables" class="nav-link" data-scroll-target="#generating-variables">Generating variables</a></li>
-  <li><a href="#conditional-distributions" id="toc-conditional-distributions" class="nav-link" data-scroll-target="#conditional-distributions">Conditional Distributions</a>
-  <ul class="collapse">
-  <li><a href="#protip-never-save-the-dataset" id="toc-protip-never-save-the-dataset" class="nav-link" data-scroll-target="#protip-never-save-the-dataset">Protip: Never Save the dataset!</a></li>
-  </ul></li>
+  <li><a href="#update-operating-system" id="toc-update-operating-system" class="nav-link active" data-scroll-target="#update-operating-system">Update Operating System</a></li>
+  <li><a href="#install-slack" id="toc-install-slack" class="nav-link" data-scroll-target="#install-slack">Install Slack</a></li>
+  <li><a href="#install-stata" id="toc-install-stata" class="nav-link" data-scroll-target="#install-stata">Install STATA</a></li>
+  <li><a href="#install-google-drive-desktop-app" id="toc-install-google-drive-desktop-app" class="nav-link" data-scroll-target="#install-google-drive-desktop-app">Install Google Drive Desktop App</a></li>
+  <li><a href="#four-questions" id="toc-four-questions" class="nav-link" data-scroll-target="#four-questions">Four Questions</a></li>
   </ul>
 </nav>
     </div>
@@ -256,8 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">ECON 111 - Lab 1 : Intro to STATA</span></h1>
-<p class="subtitle lead">Summary Statistics</p>
+<h1 class="title"><span class="chapter-title">Problem Set 0: Getting Started with STATA</span></h1>
 </div>
 
 
@@ -274,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 1, 2026</p>
+      <p class="date">January 1, 2026</p>
     </div>
   </div>
   
@@ -286,191 +239,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="preliminaries" class="level2">
-<h2 class="anchored" data-anchor-id="preliminaries">Preliminaries</h2>
-<p>Before beginning this lab, make sure you’ve done the following:</p>
+<p>Submit it on Canvas. You can either type your answers or write them in by hand and scan.</p>
+<p>If you need help with installing any of these applications, please go to the <a href="https://www.middlebury.edu/information-technology-services/requests/technology-helpdesk">helpdesk</a>.</p>
+<section id="update-operating-system" class="level2">
+<h2 class="anchored" data-anchor-id="update-operating-system">Update Operating System</h2>
+<p>A lot of technical issues are first resolved by updating your operating system. It’s also good security practice.</p>
 <ul>
-<li><p>In your Google Drive, make sure you have a folder “Lab_1”</p></li>
-<li><p>Downloaded the dataset “acs_2018.dta” from the Econ 0111 Google Drive Folder</p></li>
+<li><p><a href="https://support.apple.com/en-us/108382">Update Mac</a></p></li>
+<li><p><a href="https://support.microsoft.com/en-us/windows/install-windows-updates-3c5ae7fc-9fb6-9af1-1984-b5e0412c556a">Update Windows</a></p></li>
+</ul>
+<p>If you have a Chromebook, you should stop by the <a href="https://www.middlebury.edu/library/services/borrowing/equipment-borrowing">library</a> and check out a laptop (Mac or Windows).</p>
+</section>
+<section id="install-slack" class="level2">
+<h2 class="anchored" data-anchor-id="install-slack">Install Slack</h2>
+<ul>
+<li>Check your Middlebury email for my Slack invitation. If you did not receive it, email me (<a href="mailto:egong@middlebury.edu" class="email">egong@middlebury.edu</a>). Click on the link to join. Download the Slack app on your laptop (links to <a href="https://slack.com/intl/en-gb/downloads/mac">Mac</a> or <a href="https://slack.com/downloads/windows">Windows</a>).</li>
 </ul>
 </section>
-<section id="intro-to-stata" class="level2">
-<h2 class="anchored" data-anchor-id="intro-to-stata">Intro to STATA</h2>
-<p>STATA is a statistical software package used by many economists. There are roughly two ways of doing things in STATA: 1) using the pull down menu and 2) coding in a DO file.</p>
-<p>We will learn how to code in STATA using a DO file. The best way to learn is a process of trial and error, where you write and run code and see what happens.</p>
+<section id="install-stata" class="level2">
+<h2 class="anchored" data-anchor-id="install-stata">Install STATA</h2>
+<ul>
+<li>Install <a href="https://support.gmhec.org/TDClient/47/middlebury/Requests/ServiceDet?ID=155">STATA</a> on your laptop. If there are multiple versions, install Stata/MP. In general, if all the versions are free – install the most powerful one.</li>
+</ul>
 </section>
-<section id="open-and-save-a-do-file" class="level2">
-<h2 class="anchored" data-anchor-id="open-and-save-a-do-file">Open and Save a DO file</h2>
-<p>Click on “Do File Editor” and then File&gt;Save As and save this file as “Lab_1.do” in your Lab_1 folder.</p>
-<p>We will write STATA code in your DO file. To execute code, highlight it and then click “Do”.</p>
-</section>
-<section id="syntax" class="level2">
-<h2 class="anchored" data-anchor-id="syntax">Syntax</h2>
-<p>For comments, type <code>**</code> and STATA will know to not to execute this as code. Comments appear in green while STATA commands will appear in blue.</p>
-</section>
-<section id="set-path" class="level2">
-<h2 class="anchored" data-anchor-id="set-path">Set Path</h2>
-<p>The first step is to set the path. Using your Google Drive in either your Finder (Mac) or File Explorer (Windows) go to the Lab_1 folder and copy and paste the paste the path after <code>cd</code></p>
-<div id="eda261fc" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>** Set Path **</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    cd <span class="st">"/Users/egong@middlebury.edu/Library/CloudStorage/Dropbox/Middlebury/Course_Archieve/Spring_2026/ECON_0111/2_Assignments/Labs/Lab_1"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><code>cd</code> stands for “change directory” - this “tells” STATA where your dataset is located.</p>
-</section>
-<section id="open-the-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="open-the-dataset">Open the dataset</h2>
-<p>We will now open the dataset and then use the command <code>describe</code> or <code>des</code> to display the variables (columns) in the dataset. Type the following in your DO file, highlight them, and then press “Do”.</p>
-<div id="b7893459" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> acs_2018.dta, <span class="kw">clear</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">describe</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<style>div.jp-Notebook .datagrid-container {min-height: 448px; }</style>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Contains data from acs_2018.dta
- Observations:       383,906                  
-    Variables:            10                  7 Feb 2024 10:13
--------------------------------------------------------------------------------
-Variable      Storage   Display    Value
-    name         type    format    label      Variable label
--------------------------------------------------------------------------------
-person_id       float   %9.0g                 id number
-STATE           str20   %20s                  State of Residence
-Black           str3    %9s                   Black
-White           str3    %9s                   White
-age             byte    %8.0g                 Age
-incwage         long    %12.0g                Yearly Wage Income
-educd           str46   %46s                  Highest Education Completed
-educ_hs         byte    %8.0g                 equals 1 if hs diploma
-educ_ba         byte    %8.0g                 equals 1 if ba degree
-educ_ma         byte    %8.0g                 equals 1 if ma degree
--------------------------------------------------------------------------------
-Sorted by: </code></pre>
-</div>
-</div>
-<section id="question-1-type-browse-in-the-command-line.-how-do-the-results-from-the-describe-command-compare-to-what-you-see-in-the-dataset" class="level4">
-<h4 class="anchored" data-anchor-id="question-1-type-browse-in-the-command-line.-how-do-the-results-from-the-describe-command-compare-to-what-you-see-in-the-dataset">Question 1: Type <code>browse</code> in the command line. How do the results from the <code>describe</code> command compare to what you see in the dataset?</h4>
-</section>
-</section>
-<section id="summary-statistics" class="level2">
-<h2 class="anchored" data-anchor-id="summary-statistics">Summary Statistics</h2>
-<p>The <code>summarize</code> command will provide summary statistics for each variable (column).</p>
-<div id="b36d060b" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-   person_id |    383,906    191953.5    110824.3          1     383906
-       STATE |          0
-       Black |          0
-       White |          0
-         age |    383,906    42.41391    14.13208         18         65
--------------+---------------------------------------------------------
-     incwage |    383,906    33828.55    36882.89          0     126000
-       educd |          0
-     educ_hs |    383,906    .4912192    .4999235          0          1
-     educ_ba |    383,906    .2018228    .4013612          0          1
-     educ_ma |    383,906    .0851094    .2790448          0          1</code></pre>
-</div>
-</div>
-<section id="question-2-looking-at-the-dataset-and-summary-statistics-what-is-the-unit-of-observation-in-other-words-what-does-each-row-represent-and-how-many-observations-does-the-dataset-contain" class="level4">
-<h4 class="anchored" data-anchor-id="question-2-looking-at-the-dataset-and-summary-statistics-what-is-the-unit-of-observation-in-other-words-what-does-each-row-represent-and-how-many-observations-does-the-dataset-contain">Question 2: Looking at the dataset and summary statistics, what is the unit of observation? In other words, what does each row represent? And how many observations does the dataset contain?</h4>
-</section>
-</section>
-<section id="distributions" class="level2">
-<h2 class="anchored" data-anchor-id="distributions">Distributions</h2>
-<p>We can look at the distribution of income using the <code>histogram</code> command. We can also export it as a .png so we can use it in reports, problem sets, and papers. You can simply drag-and-drop the .png file into your document.</p>
-<div id="8d110735" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">histogram</span> incwage</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> incwage.png, <span class="kw">replace</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<section id="install-google-drive-desktop-app" class="level2">
+<h2 class="anchored" data-anchor-id="install-google-drive-desktop-app">Install Google Drive Desktop App</h2>
+<ul>
+<li><p>Download <a href="https://www.google.com/drive/download/">Google Drive</a> for your desktop then link it to your Middlebury Google Drive account.</p></li>
+<li><p>Navigate to your Google Drive using the Finder (Mac) or File Explorer (Windows). See if you can do this WITHOUT using your browser.</p></li>
+<li><p>Create a new folder titled “ECON_0111”. In this folder, create a subfolder titled “LABS” and in this folder a subfolder “Lab_1”.</p></li>
+<li><p>Now create a shortcut on your desktop for ECON 0111 so you can quickly navigate to it. To see how to do this (<a href="https://www.youtube.com/watch?v=kdeVKS8Ej7s">Mac</a>) or (<a href="https://www.youtube.com/watch?v=9tEjrYi0Huc">Windows</a>)</p></li>
+</ul>
+<p>On my Mac, it looks like this:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/incwage500.png" class="img-fluid figure-img"></p>
-<figcaption>Dist Income</figcaption>
+<p><img src="images/ps0/image1.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>A screenshot of a computer</figcaption>
 </figure>
 </div>
-<p>We can also look at the mean, median, and standard deviation of income.</p>
-<div id="c8b3e3f7" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> incwage, <span class="kw">detail</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-                     Yearly Wage Income
--------------------------------------------------------------
-      Percentiles      Smallest
- 1%            0              0
- 5%            0              0
-10%            0              0       Obs             383,906
-25%            0              0       Sum of wgt.     383,906
-
-50%        24000                      Mean           33828.55
-                        Largest       Std. dev.      36882.89
-75%        52000         126000
-90%        92000         126000       Variance       1.36e+09
-95%       126000         126000       Skewness       1.088602
-99%       126000         126000       Kurtosis       3.258034</code></pre>
-</div>
-</div>
-<p>The mean is 33828, the median is 24000, and the standard deviation is 36882.</p>
-<section id="question-3-why-do-you-think-the-mean-is-greater-than-the-median" class="level4">
-<h4 class="anchored" data-anchor-id="question-3-why-do-you-think-the-mean-is-greater-than-the-median">Question 3: Why do you think the mean is greater than the median?</h4>
+<p>Notice that there is a link under “Favorites” to my Econ_111_F2024 folder. This is useful since I will be using it a lot this semester. My LABS folder has two subfolders Lab_1 and Lab_2.</p>
+<ul>
+<li>Finally, find the path to your ECON_111 folder. Copy and paste the path to a blank document (Google Docs, Word, text editor). See how to do this in <a href="https://www.youtube.com/watch?v=gxU1wlBAsig">Mac</a> or <a href="https://www.youtube.com/watch?v=vbb-lDh477g">Windows</a>.</li>
+</ul>
 </section>
-</section>
-<section id="generating-variables" class="level2">
-<h2 class="anchored" data-anchor-id="generating-variables">Generating variables</h2>
-<p>We can add new variables to our dataset. Let’s generate a variable “old” for individuals over the age of 40. The syntax is as follows. We use the <code>if</code> statement to define when the variable “old” takes values of 1 and 0. We then use the <code>tab</code> command to see the distribution of this new variable.</p>
-<div id="b66b5c9e" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> old = 1 <span class="kw">if</span> age&gt;=40</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span> old = 0 <span class="kw">if</span> age&lt;40</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> old</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>(167,100 missing values generated)
-(167,100 real changes made)
-
-        old |      Freq.     Percent        Cum.
-------------+-----------------------------------
-          0 |    167,100       43.53       43.53
-          1 |    216,806       56.47      100.00
-------------+-----------------------------------
-      Total |    383,906      100.00</code></pre>
+<section id="four-questions" class="level2">
+<h2 class="anchored" data-anchor-id="four-questions">Four Questions</h2>
+<p><strong>Q1:</strong> Go to Slack and write how you feel about coding.</p>
+<p><strong>Q2:</strong> Go to the course Google Drive <a href="https://drive.google.com/drive/folders/1-CeMvLER3ILNIVb1gjamd-CoW_DGwNjN?usp=sharing">here</a>. In the Lab_1 folder there are two files “Lab_1.do” and “acs_2018.dta.” Download both files to your “Lab_1” folder.</p>
+<p>Did you successfully do this? Yes or No</p>
+<p><strong>Q3:</strong> Launch STATA. On the menu bar (upper left corner), select File&gt;Open. Select the dataset “acs_2018.dta”. In the command line type “describe”. Do you see the following in your results screen? Yes or No</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/ps0/image2.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>A screenshot of a computer</figcaption>
+</figure>
 </div>
-</div>
-<section id="question-4-how-many-old-people-are-in-the-dataset-what-percentage-of-the-dataset-do-they-make-up" class="level4">
-<h4 class="anchored" data-anchor-id="question-4-how-many-old-people-are-in-the-dataset-what-percentage-of-the-dataset-do-they-make-up">Question 4: How many old people are in the dataset? What percentage of the dataset do they make up?</h4>
-</section>
-</section>
-<section id="conditional-distributions" class="level2">
-<h2 class="anchored" data-anchor-id="conditional-distributions">Conditional Distributions</h2>
-<p>Let’s look at the distribution of income for old and young people.</p>
-<section id="question-5-take-a-look-at-the-following-code.-what-do-you-think-will-be-generated-when-we-execute-it-after-you-write-down-your-prediction-run-the-code-and-see-what-happens." class="level4">
-<h4 class="anchored" data-anchor-id="question-5-take-a-look-at-the-following-code.-what-do-you-think-will-be-generated-when-we-execute-it-after-you-write-down-your-prediction-run-the-code-and-see-what-happens.">Question 5: Take a look at the following code. What do you think will be generated when we execute it? After you write down your prediction, run the code and see what happens.</h4>
-<div id="3045fbb8" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a> <span class="kw">histogram</span> incwage <span class="kw">if</span> old==1</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">graph</span> <span class="kw">export</span> incwage_old.png,  <span class="kw">replace</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a> <span class="kw">histogram</span> incwage <span class="kw">if</span> old==0</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">graph</span> <span class="kw">export</span> incwage_young.png,  <span class="kw">replace</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="protip-never-save-the-dataset" class="level3">
-<h3 class="anchored" data-anchor-id="protip-never-save-the-dataset">Protip: Never Save the dataset!</h3>
-<p>It sounds counter-intuitive, but never save the dataset. To be specific, never overwrite the original or “raw” dataset (acs_2018). Why? Once you do, you can never recover the original dataset and this DO file will be not work. Why? It’s going to duplicate things you already did, such as generating a variable (old).</p>
-<p>Save the DO file instead. And if you really need to save the dataset, use a different name, like acs_2018_v2.dta.</p>
-<section id="question-6-what-will-happen-when-you-run-the-following-code-write-it-down.-then-run-the-code." class="level4">
-<h4 class="anchored" data-anchor-id="question-6-what-will-happen-when-you-run-the-following-code-write-it-down.-then-run-the-code.">Question 6: What will happen when you run the following code? Write it down. Then run the code.</h4>
-<div id="ff1ceaab" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> incwage <span class="kw">if</span> old==1, <span class="kw">detail</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> incwage <span class="kw">if</span> old==0, <span class="kw">detail</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="question-7-compare-the-distributions-of-income-between-old-and-young." class="level4">
-<h4 class="anchored" data-anchor-id="question-7-compare-the-distributions-of-income-between-old-and-young.">Question 7: Compare the distributions of income between old and young.</h4>
-<p>What if you are working with a variable that takes text instead of numerical values? What if you want a variable that is not equal?</p>
+<p>If you put “No” to questions 2 or 3, don’t be too stressed. See if there is someone else in the class who can show you how to do the questions. I will also review this in the lab.</p>
+<p><strong>Q4:</strong> Do you have a Letter of Accommodation that requests either additional time or a distraction free space for exams? Yes or No</p>
+<p>If you put yes, please submit to me your LOA letter either via <a href="https://econ111econst-wti8720.slack.com/">Slack DM</a> to me or email: <a href="mailto:egong@middlebury.edu" class="email">egong@middlebury.edu</a></p>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -876,13 +704,13 @@ Sorted by: </code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./PS_0.html" class="pagination-link" aria-label="Problem Set 0: Getting Started with STATA">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Problem Set 0: Getting Started with STATA</span></span>
+      <a href="./index.html" class="pagination-link" aria-label="Welcome">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Welcome</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Lab_2.html" class="pagination-link" aria-label="ECON 111 - Lab 2 : Joint Distributions">
-        <span class="nav-page-text"><span class="chapter-title">ECON 111 - Lab 2 : Joint Distributions</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Lab_1.html" class="pagination-link" aria-label="ECON 111 - Lab 1 : Intro to STATA">
+        <span class="nav-page-text"><span class="chapter-title">ECON 111 - Lab 1 : Intro to STATA</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

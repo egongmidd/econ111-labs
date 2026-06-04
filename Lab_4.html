@@ -157,6 +157,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./PS_0.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Problem Set 0: Getting Started with STATA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Lab_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 1 : Intro to STATA</span></a>
   </div>
 </li>
@@ -197,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Lab_9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Lab 9: Review</span></a>
+  <a href="./Lab_9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 9 : Review</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -283,18 +288,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Created a folder “Lab 4”</p></li>
 <li><p>Downloaded the necessary data into the folder from the course site</p></li>
 </ul>
-<div id="2d352f6e" class="cell" data-execution_count="1">
+<div id="f5879428" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>** Set Path **</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>     cd  <span class="st">"/Users/egong@middlebury.edu/Library/CloudStorage/Dropbox/Middlebury/Course_Archieve/Spring_2026/ECON_0111/2_Assignments/Labs/Lab_4"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="70af4aa1" class="cell" data-execution_count="2">
+<div id="245dcbc2" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">quietly</span> cd  <span class="st">"/Users/egong@middlebury.edu/Library/CloudStorage/Dropbox/Middlebury/Course_Archieve/Spring_2026/ECON_0111/2_Assignments/Labs/Lab_4"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="dataset-as-the-population" class="level2">
 <h2 class="anchored" data-anchor-id="dataset-as-the-population">Dataset as the Population</h2>
 <p>The dataset for this lab is “Population_IPUMS.dta”. It has 1,000,000 individual observations from the 2022 American Community Survey (IPUMS USA), with variables including: age (25-65 years), annual wage income (in dollars), hours worked, and employment status. Normally, datasets are typically “samples” from a population, but in this simulation, the dataset is the population.</p>
-<div id="375e6fac" class="cell" data-execution_count="3">
+<div id="459e967e" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span>  <span class="st">"Population_IPUMS.dta"</span>, <span class="kw">clear</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -328,7 +333,7 @@ Sorted by:
 </div>
 <section id="population-distributions" class="level3">
 <h3 class="anchored" data-anchor-id="population-distributions">Population Distributions</h3>
-<div id="2c410ec0" class="cell" data-execution_count="4">
+<div id="f012e257" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">histogram</span> age, discrete</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">histogram</span> wage</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">histogram</span> hours</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -341,11 +346,11 @@ Sorted by:
 <section id="simulation-random-sampling" class="level2">
 <h2 class="anchored" data-anchor-id="simulation-random-sampling">Simulation: Random Sampling</h2>
 <p>Stata’s random-number generation functions, do not really produce random numbers. These functions are deterministic algorithms that produce numbers that can pass for random. <code>set seed #</code> specifies the initial value of the random-number seed. Whatever you do after setting the seed, if you set the seed to the same value and repeat what you did, you will obtain the same results. This is important with simulations - if we want the exact same results (problem set, exam) we need to set the seed to a specific number.</p>
-<div id="ab2bfa8d" class="cell" data-execution_count="5">
+<div id="e2142d37" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> <span class="dv">seed</span> 210</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>To generate a random sample, we will assign each individual in the dataset a random number between 0 and 1. We will then sort the dataset by this random number. Why? This simulates a random sample.</p>
-<div id="c8525fc8" class="cell" data-execution_count="6">
+<div id="fc80e76a" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> random = runiform()</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>* browse</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    ** Look <span class="fu">at</span> random column **</span>
@@ -362,7 +367,7 @@ Sorted by:
 </figure>
 </div>
 <p>In STATA, let’s calculate the sample mean for age for this sample of n=2.</p>
-<div id="731f7f34" class="cell" data-execution_count="7">
+<div id="476348e4" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> age <span class="kw">if</span> (<span class="dt">_n</span>&gt;=1 &amp; <span class="dt">_n</span>&lt;=2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -373,7 +378,7 @@ Sorted by:
 </div>
 <p>We also want to record this sample mean. Imagine there’s a spreadsheet in STATA that can record our results. We first need to find where the result is stored (the sample mean). We then take this stored valued and add it to a matrix (spreadsheet).</p>
 <p><code>return list</code> shows that the results in STATA are saved in scalars (think of a single cell on a spreadsheet). <code>matrix</code> generates a spreadsheet where we can insert the saved result.</p>
-<div id="8c8b35a0" class="cell" data-execution_count="8">
+<div id="ddc3f6fc" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> age <span class="kw">if</span> (<span class="dt">_n</span>&gt;=1 &amp; <span class="dt">_n</span>&lt;=2)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span> <span class="ot">list</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span> age_xbar_2=<span class="fu">r</span>(<span class="kw">mean</span>)</span>
@@ -414,7 +419,7 @@ r1  61</code></pre>
 </figure>
 </div>
 <p>And in STATA, we do the following:</p>
-<div id="6060bfc2" class="cell" data-execution_count="9">
+<div id="3ff042a2" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> age <span class="kw">if</span> (<span class="dt">_n</span>&gt;=3 &amp; <span class="dt">_n</span>&lt;=4)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span> age_xbar_2=age_xbar_2 \ <span class="fu">r</span>(<span class="kw">mean</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span> <span class="ot">list</span> age_xbar_2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -444,7 +449,7 @@ r2  43</code></pre>
 <h2 class="anchored" data-anchor-id="simulation-repeated-samples">Simulation: Repeated Samples</h2>
 <section id="q5-we-now-want-to-take-500-repeated-samples-of-the-same-size-n10.-here-are-code-snippets-for-the-loop-can-put-them-in-the-right-order-predict-what-the-loop-will-do-write-it-down-and-then-execute-it." class="level4">
 <h4 class="anchored" data-anchor-id="q5-we-now-want-to-take-500-repeated-samples-of-the-same-size-n10.-here-are-code-snippets-for-the-loop-can-put-them-in-the-right-order-predict-what-the-loop-will-do-write-it-down-and-then-execute-it.">Q5: We now want to take 500 repeated samples of the same size (n=10). Here are code snippets for the loop, can put them in the right order? Predict what the loop will do (write it down) and then execute it.</h4>
-<div id="67f2ef66" class="cell" data-execution_count="10">
+<div id="b3189701" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span> age_xbar_10 = age_xbar_10 \ <span class="fu">r</span>(<span class="kw">mean</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> age <span class="kw">if</span> (<span class="dt">_n</span>&gt;<span class="ot">`i'</span> &amp; <span class="dt">_n</span>&lt;=<span class="ot">`i'</span>+10)</span>
@@ -458,7 +463,7 @@ r2  43</code></pre>
 </figure>
 </div>
 <p>Finally, let’s look at the distribution of the sample mean. First look at the matrix you created <code>matrix list age_xbar_10</code>. We want to generate a histogram using these sample means. We first must input the matrix into a dataset using <code>svmat</code></p>
-<div id="2603edfa" class="cell" data-execution_count="11">
+<div id="3be2777b" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span> <span class="ot">dir</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">svmat</span> age_xbar_10</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>** now look <span class="fu">at</span> the <span class="fu">last</span> column <span class="kw">of</span> the dataset **</span>
@@ -466,7 +471,7 @@ r2  43</code></pre>
 </div>
 <p>The last column is a variable “age_xbar_101”. It refers to the matrix that was converted into data and the “1” at the end refers to the first column of the matrix.</p>
 <p>Now we can look at the distribution of the sample mean of age where n=10.</p>
-<div id="802faa02" class="cell" data-execution_count="12">
+<div id="3e336ff3" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> age_xbar_101</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -485,7 +490,7 @@ r2  43</code></pre>
 <p>Remember, that other sample statistics are also random variables. The way to think about it is that prior to sampling (collecting the data), statistics such as the median, variance, standard deviation, min, and max are unknown, but they will take a numerical outcome.</p>
 <p>To look at other sample statistics, you first need to set the sample size (n).</p>
 <p>Let’s use a sample size n=150 for age.</p>
-<div id="e59f6a3f" class="cell" data-execution_count="13">
+<div id="54ca25ac" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> age <span class="kw">if</span> (<span class="dt">_n</span>&gt;=1 &amp; <span class="dt">_n</span>&lt;=150)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span> <span class="ot">list</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -507,7 +512,7 @@ scalars:
 </div>
 <p>To evaluate any of the other sample statistics, simply use one of the scalars <code>r(.)</code>. For example, if we wanted to use the variance we would use <code>r(Var)</code> and for the max we use <code>r(max)</code>.</p>
 <p>Here’s an example of setting up a matrix that captures the standard deviation.</p>
-<div id="0b85bfe7" class="cell" data-execution_count="14">
+<div id="bfd8a345" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> age <span class="kw">if</span> (<span class="dt">_n</span>&gt;=1 &amp; <span class="dt">_n</span>&lt;=150)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span> <span class="ot">list</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span> age_sd_150=<span class="fu">r</span>(<span class="fu">sd</span>)</span>

@@ -157,6 +157,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./PS_0.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Problem Set 0: Getting Started with STATA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Lab_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 1 : Intro to STATA</span></a>
   </div>
 </li>
@@ -197,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Lab_9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Lab 9: Review</span></a>
+  <a href="./Lab_9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 9 : Review</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -283,7 +288,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Created a folder “Lab 3”</p></li>
 <li><p>Downloaded the necessary data into the folder from the course site</p></li>
 </ul>
-<div id="4adb14a4" class="cell" data-execution_count="1">
+<div id="597ffe4c" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>** Set Path **</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    cd <span class="st">"/Users/egong@middlebury.edu/Library/CloudStorage/Dropbox/Middlebury/Course_Archieve/Spring_2026/ECON_0111/2_Assignments/Labs/Lab_3/"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -292,7 +297,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="investment-portfolios">Investment Portfolios</h2>
 <p>A portfolio is a collection of assets (stocks, bonds, private equity, etc.) designed to have a positive return. Diversifying investments across different asset classes is meant to reduce risk or the variance of returns.</p>
 <p>Let’s open up the dataset which has various asset classes and monthly returns. Each observation (row) is a month.</p>
-<div id="785bc2c0" class="cell" data-execution_count="2">
+<div id="80e45e7e" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> assets.dta, <span class="kw">clear</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -352,7 +357,7 @@ Sorted by: random
 </div>
 <p>We have 100,000 monthly observations of different assets. CMO stands for collateralized mortgage obligations and involves the bundling of multiple mortgages (i.e.&nbsp;a loan you take to buy a house) that pays out a fixed payment. You can see average monthly returns, the standard deviations, and the returns/losses from the best and worst months for each asset.</p>
 <p>Let’s look at the distribution for bitcoin.</p>
-<div id="98399e76" class="cell" data-execution_count="3">
+<div id="6914bac8" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">histogram</span> bitcoin</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">graph</span> <span class="kw">export</span> bitcoin.png, <span class="kw">width</span>(500) <span class="kw">replace</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -364,7 +369,7 @@ Sorted by: random
 </div>
 <p>What do you think about this distribution? Check out the distributions for the other asset classes.</p>
 <p>Suppose we have $100 MM to invest. We will use scalars to set our allocations. You can think of scalars as cells in a spreadsheet that hold specific values.</p>
-<div id="6d3c8cb5" class="cell" data-execution_count="4">
+<div id="c2256a33" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scalar</span> istocks = 20 <span class="co">/* investment in stocks in MM */</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scalar</span> icmo = 50 <span class="co">/* investment in CMO in MM */</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scalar</span> ibond = 10 <span class="co">/* investment in bonds in MM */</span></span>
@@ -397,7 +402,7 @@ Sorted by: random
 <li><p>The monthly returns come from the distributions of each asset class</p></li>
 </ul>
 <p>We look at the returns from the first month. Note that <code>_n</code> refers to the observation number.</p>
-<div id="29816738" class="cell" data-execution_count="5">
+<div id="b2e45c44" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> port_return1 = istocks*stocks + icmo*cmo + ibond*bonds + ibitcoin*bitcoin + ioption*option <span class="kw">if</span> <span class="dt">_n</span>==1</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> <span class="kw">if</span> <span class="dt">_n</span>==1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -422,12 +427,12 @@ Sorted by: random
 <section id="question-3-what-if-we-wanted-to-do-a-second-simulation-using-the-returns-from-the-2nd-month-how-would-you-edit-the-code" class="level4">
 <h4 class="anchored" data-anchor-id="question-3-what-if-we-wanted-to-do-a-second-simulation-using-the-returns-from-the-2nd-month-how-would-you-edit-the-code">Question 3: What if we wanted to do a second simulation using the returns from the 2nd month? How would you edit the code?</h4>
 <p>Now we want to simulate the returns for multiple months. One way of doing this is to use a loop. Before you execute the code, write down your predictions on what will happen.</p>
-<div id="1b267d03" class="cell" data-execution_count="6">
+<div id="8755922b" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a> <span class="kw">forvalues</span> i = 1(1)100 {</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>     <span class="kw">replace</span> port_return1 =istocks*stocks +icmo*cmo +ibond*bonds +ibitcoin*bitcoin +ioption*option <span class="kw">if</span> <span class="dt">_n</span>==<span class="ot">`i'</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>   }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="95f15ae5" class="cell" data-execution_count="7">
+<div id="fea37081" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a> <span class="kw">quietly</span> {</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>   <span class="kw">forvalues</span> i = 1(1)100 {</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>     <span class="kw">replace</span> port_return1 =istocks*stocks +icmo*cmo +ibond*bonds +ibitcoin*bitcoin +ioption*option <span class="kw">if</span> <span class="dt">_n</span>==<span class="ot">`i'</span></span>
@@ -435,7 +440,7 @@ Sorted by: random
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a> }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now let’s look at the distribution of monthly returns for our portfolio. We want to see how many times we lose more than $5 MM.</p>
-<div id="7c143cb7" class="cell" data-execution_count="8">
+<div id="4aec6adc" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> port_return1</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">histogram</span> port_return1</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> port_return1.png, <span class="kw">width</span>(500) <span class="kw">replace</span></span>
@@ -471,7 +476,7 @@ Sorted by: random
 <p>Let’s model “stocks” as being correlated with “cmo2”.</p>
 <section id="question-6-predict-what-the-following-code-does" class="level4">
 <h4 class="anchored" data-anchor-id="question-6-predict-what-the-following-code-does">Question 6: Predict what the following code does:</h4>
-<div id="dbab848b" class="cell" data-execution_count="9">
+<div id="ce05f9c6" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> stocks2 = stocks+(.75*cmo2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -484,7 +489,7 @@ Sorted by: random
 <p>Most financial firms borrow heavily which is known as leverage. If the portfolio borrows $100 MM, it can invest $200 MM. This is known as 2:1 leverage. Why do this? It amplifies your returns. You know what else it does? Let’s find out.</p>
 <section id="question-8-what-do-you-think-the-following-code-does-how-much-will-we-have-invested-in-stocks-in-bitcoin" class="level4">
 <h4 class="anchored" data-anchor-id="question-8-what-do-you-think-the-following-code-does-how-much-will-we-have-invested-in-stocks-in-bitcoin">Question 8: What do you think the following code does? How much will we have invested in stocks? In bitcoin?</h4>
-<div id="1bdf2f0a" class="cell" data-execution_count="10">
+<div id="554969b3" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scalar</span> <span class="kw">leverage</span> = 2</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scalar</span> istocks = 20*<span class="kw">leverage</span> <span class="co">/* investment in stocks in MM */</span></span>

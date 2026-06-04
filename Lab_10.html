@@ -157,6 +157,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./PS_0.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Problem Set 0: Getting Started with STATA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Lab_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 1 : Intro to STATA</span></a>
   </div>
 </li>
@@ -197,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Lab_9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Lab 9: Review</span></a>
+  <a href="./Lab_9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 9 : Review</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -282,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Created a folder “Lab 10”</p></li>
 <li><p>Downloaded the necessary data into the folder from the course site</p></li>
 </ul>
-<div id="7b8512e9" class="cell" data-execution_count="1">
+<div id="a916fe12" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>** Set Path **</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"/Users/egong@middlebury.edu/Library/CloudStorage/Dropbox/Middlebury/Course_Archieve/Spring_2026/ECON_0111/2_Assignments/Labs/Lab_10_Reg/"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -291,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="china-trade-shocks-state-level-policy-or-treatment-t">China Trade Shocks (State-Level Policy or Treatment T)</h2>
 <p>A research program has focused on studying the impacts of the <a href="https://chinashock.info/">China Trade Shock</a>. While trade has a number of benefits, the costs can be disproportionately borne by vulnerable groups (non college degree holders). A number of manufacturing jobs disappeared as a result of the trade shock, and this job loss might have resulted in what is known as “deaths of despair” where the cause of death is either suicide or accidental overdose.</p>
 <p>The China Trade Shock data is based on Autor, Dorn, and Hanson (2019) - henceforward known as ADN.</p>
-<div id="d820e560" class="cell" data-execution_count="2">
+<div id="b478d8a6" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> state_trade_shocks.dta, <span class="kw">clear</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span>, fullnames</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -337,7 +342,7 @@ import_~n_q4 |         48         2.5    1.129865          1          4</code></
 <section id="cdc-mortality-data-outcome-or-y" class="level2">
 <h2 class="anchored" data-anchor-id="cdc-mortality-data-outcome-or-y">CDC Mortality Data (Outcome or Y)</h2>
 <p>The CDC maintains the National Vital Statistics database that documents all births and deaths in the United States. You can access it using <a href="https://wonder.cdc.gov/">CDC WONDER</a>. It can be a little difficult to use.</p>
-<div id="d2703d58" class="cell" data-execution_count="3">
+<div id="9d7c9547" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> CDC_DD.dta, <span class="kw">clear</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -370,7 +375,7 @@ Sorted by:
 <p>The death rate is calculated as deaths per 100,000.</p>
 <section id="q1-how-is-the-cdc-data-different-from-the-cps-dataset-hint-what-is-the-unit-of-observation" class="level4">
 <h4 class="anchored" data-anchor-id="q1-how-is-the-cdc-data-different-from-the-cps-dataset-hint-what-is-the-unit-of-observation">Q1 How is the CDC data different from the CPS dataset? (Hint: What is the unit of observation?)</h4>
-<div id="e576cd1d" class="cell" data-execution_count="4">
+<div id="a1c67393" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> <span class="fu">m</span>:1 state_fips <span class="kw">using</span> state_trade_shocks.dta</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -391,7 +396,7 @@ Sorted by:
 <section id="q3-which-states-do-we-not-have-trade-shock-data-for" class="level4">
 <h4 class="anchored" data-anchor-id="q3-which-states-do-we-not-have-trade-shock-data-for">Q3 Which states do we NOT have trade shock data for?</h4>
 <p>Drop states where we don’t have trade shock data.</p>
-<div id="67cc2397" class="cell" data-execution_count="5">
+<div id="6d05f421" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> <span class="dt">_merge</span>==1</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="dt">_merge</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -403,7 +408,7 @@ Sorted by:
 <section id="time-series-deaths-of-despair-over-time" class="level2">
 <h2 class="anchored" data-anchor-id="time-series-deaths-of-despair-over-time">Time-Series: Deaths of Despair over Time</h2>
 <p>Since the CDC data is on a state x year, we can see how deaths of despair change over time for any state.</p>
-<div id="187e1c9c" class="cell" data-execution_count="6">
+<div id="fe79e97b" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> (connected Male_DD  Year, <span class="kw">sort</span>)  (connected Female_DD Year, <span class="kw">sort</span>) <span class="kw">if</span> State==<span class="st">"MICHIGAN"</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> <span class="st">"dd_michigan.png"</span>, <span class="kw">replace</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -417,7 +422,7 @@ Sorted by:
 <section id="do-states-with-trade-shocks-have-higher-rates-of-deaths-of-despair" class="level2">
 <h2 class="anchored" data-anchor-id="do-states-with-trade-shocks-have-higher-rates-of-deaths-of-despair">Do states with trade shocks have higher rates of deaths of despair?</h2>
 <p>The biggest impact of the trade shock was between 2000-2010 (based on ADN). Assuming it takes a while for labor markets to respond, we can compare death rates for years 2010 and forward.</p>
-<div id="e602af7c" class="cell" data-execution_count="7">
+<div id="e3eb59a4" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ttest</span> Male_DD <span class="kw">if</span> Year&gt;=2010, <span class="kw">by</span>(import_shock_men)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -442,7 +447,7 @@ H0: diff = 0                                     Degrees of freedom =      332
 <section id="q4-how-do-you-interpret-these-results" class="level4">
 <h4 class="anchored" data-anchor-id="q4-how-do-you-interpret-these-results">Q4 How do you interpret these results?</h4>
 <p>Now, one thing to consider, is that maybe states that experienced trade shocks are different than states that did not. Let’s go back to 1999, prior to the China Trade shock period.</p>
-<div id="70c94760" class="cell" data-execution_count="8">
+<div id="cabdabf9" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ttest</span> Male_DD <span class="kw">if</span> Year==1999, <span class="kw">by</span>(import_shock_men)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -472,7 +477,7 @@ H0: diff = 0                                     Degrees of freedom =       43
 <section id="changes-vs-levels-outcome" class="level2">
 <h2 class="anchored" data-anchor-id="changes-vs-levels-outcome">Changes vs Levels (Outcome)</h2>
 <p>We might want to look at how deaths of despair change over time (changes), as opposed to the number in a given year (levels). First, we need to tell STATA that we have state x year data otherwise known as a “panel dataset”. The command <code>xtset</code> tells STATA that the unit of observation is a state <code>state_fips</code> by year <code>year</code>.</p>
-<div id="e490498d" class="cell" data-execution_count="9">
+<div id="44ef5fd0" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>xtset state_fips Year</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> Male_DD_10yr_chg = Male_DD-L10.Male_DD</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -487,7 +492,7 @@ Panel variable: state_fips (unbalanced)
 <section id="q6-generate-a-7-year-change-in-male-deaths-of-despair." class="level4">
 <h4 class="anchored" data-anchor-id="q6-generate-a-7-year-change-in-male-deaths-of-despair.">Q6: Generate a 7 year change in male deaths of despair.</h4>
 <p>Now we can do a t-test looking at changes in the death rate as opposed to levels.</p>
-<div id="c5e68627" class="cell" data-execution_count="10">
+<div id="1f138483" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ttest</span> Male_DD_10yr_chg <span class="kw">if</span> Year&gt;=2010, <span class="kw">by</span>(import_shock_men)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -513,7 +518,7 @@ H0: diff = 0                                     Degrees of freedom =      314
 <section id="q7-how-do-you-interpret-the-sample-means-the-difference" class="level4">
 <h4 class="anchored" data-anchor-id="q7-how-do-you-interpret-the-sample-means-the-difference">Q7: How do you interpret the sample means? The difference?</h4>
 <p>We can also look at the correlation between changes in death rates and trade shocks.</p>
-<div id="fb670c95" class="cell" data-execution_count="11">
+<div id="39801ba9" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>correlate Male_DD_10yr_chg import_shock_men  <span class="kw">if</span> Year&gt;=2010</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(obs=316)
@@ -531,7 +536,7 @@ import_sho~n |   0.2204   1.0000
 <section id="linear-regression" class="level2">
 <h2 class="anchored" data-anchor-id="linear-regression">Linear Regression</h2>
 <p>Let’s do a t-test and then a linear regression. The regression command is <code>reg</code> followed by the outcome (Y=Deaths) and then the treatment (T=1 if state has trade shock).</p>
-<div id="e72286ce" class="cell" data-execution_count="12">
+<div id="7bf4c42c" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ttest</span> Male_DD_10yr_chg <span class="kw">if</span> Year&gt;=2010, <span class="kw">by</span>(import_shock_men)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">reg</span> Male_DD_10yr_chg import_shock_men <span class="kw">if</span> Year&gt;=2010</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -581,7 +586,7 @@ import_sho~n |   7.346148   1.834337     4.00   0.000     3.737003    10.95529
 <section id="q9-draw-a-line-that-connects-the-means.-how-is-this-line-connected-to-the-t-test-and-the-linear-regression" class="level4">
 <h4 class="anchored" data-anchor-id="q9-draw-a-line-that-connects-the-means.-how-is-this-line-connected-to-the-t-test-and-the-linear-regression">Q9: Draw a line that connects the means. How is this line connected to the t-test and the linear regression?</h4>
 <p>Note that Male_DD_10yr_chg (Y) is continuous while import_shock_men (T) is discrete and only takes two values. This makes a t-test straightforward. But what happens if the treatment takes more than two values? For example, “import_shock_men_q4” is a variable that takes four values corresponding to the quartiles of shock exposure. When import_shock_men_q4=1, these states have minimal exposure to the trade shock. As import_shock_men_q4 increases, the more exposure a state has to the trade shock, with values of 4 being in the highest quartile (and most impacted).</p>
-<div id="400aae79" class="cell" data-execution_count="13">
+<div id="f98a36d7" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> import_shock_men</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> import_shock_men_q4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -611,7 +616,7 @@ China Shock |
 <section id="q10-which-states-had-the-greatest-impact-to-china-trade-shocks-based-on-import_shock_men_q4" class="level4">
 <h4 class="anchored" data-anchor-id="q10-which-states-had-the-greatest-impact-to-china-trade-shocks-based-on-import_shock_men_q4">Q10: Which states had the greatest impact to China trade shocks based on import_shock_men_q4?</h4>
 <p>Let’s look at the correlation between deaths of despair and shocks using quantiles.</p>
-<div id="5e50a7b5" class="cell" data-execution_count="14">
+<div id="59366396" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>correlate Male_DD_10yr_chg import_shock_men_q4 <span class="kw">if</span> Year&gt;=2010</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span> <span class="ot">list</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scalar</span> rho = <span class="fu">r</span>(rho)</span>
@@ -635,7 +640,7 @@ matrices:
 </div>
 </div>
 <p>Now we can visualize this association as well and include the correlation.</p>
-<div id="b2419fcd" class="cell" data-execution_count="15">
+<div id="68509f64" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> (<span class="kw">mean</span>) Male_DD_10yr_chg <span class="kw">if</span> Year&gt;=2010 , <span class="bn">over</span>(import_shock_men_q4) <span class="bn">blabel</span>(<span class="bn">bar</span>) <span class="bn">title</span>(Trade Shocks and Deaths <span class="kw">of</span> Despair) <span class="bn">subtitle</span>(Quartile <span class="kw">of</span> Trade Shock Exposure) <span class="bn">ytitle</span>(Avg 10-yr change <span class="kw">in</span> DofD) <span class="kw">note</span>(<span class="st">"correlation =  `=rho'"</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> <span class="st">"bar_DD_shocksq4.png"</span>, <span class="kw">replace</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -646,7 +651,7 @@ matrices:
 </figure>
 </div>
 <p>It’s not so clear on how you do a t-test using “import_shock_men_q4”. Linear regression is helpful in this situation. It allows for the treatment to take multiple values.</p>
-<div id="414b978f" class="cell" data-execution_count="16">
+<div id="63aa528f" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">reg</span> Male_DD_10yr_chg import_shock_men_q4 <span class="kw">if</span> Year&gt;=2010</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -668,7 +673,7 @@ import_~n_q4 |   3.995025   .8313404     4.81   0.000     2.359324    5.630727
 </section>
 <section id="q11-based-on-what-weve-covered-so-far-how-do-you-interpret-the-results-from-the-linear-regression" class="level4">
 <h4 class="anchored" data-anchor-id="q11-based-on-what-weve-covered-so-far-how-do-you-interpret-the-results-from-the-linear-regression">Q11: Based on what we’ve covered so far, how do you interpret the results from the linear regression?</h4>
-<div id="7fdfd7a1" class="cell" data-execution_count="17">
+<div id="809bc622" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>* Creates Mean <span class="kw">for</span> each trade shock quartile to <span class="kw">use</span> <span class="kw">for</span> scatterplot</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="kw">egen</span> Male_DD_10yr_chg_mean =<span class="kw">mean</span>(Male_DD_10yr_chg) <span class="kw">if</span> Year&gt;=2010, <span class="kw">by</span>(import_shock_men_q4)</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1091,8 +1096,8 @@ import_~n_q4 |   3.995025   .8313404     4.81   0.000     2.359324    5.630727
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Lab_9.html" class="pagination-link" aria-label="Lab 9: Review">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Lab 9: Review</span></span>
+      <a href="./Lab_9.html" class="pagination-link" aria-label="ECON 111 - Lab 9 : Review">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">ECON 111 - Lab 9 : Review</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

@@ -157,6 +157,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./PS_0.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Problem Set 0: Getting Started with STATA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Lab_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 1 : Intro to STATA</span></a>
   </div>
 </li>
@@ -197,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Lab_9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Lab 9: Review</span></a>
+  <a href="./Lab_9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 9 : Review</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -278,7 +283,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Created a folder “Lab 5”</p></li>
 <li><p>Downloaded the necessary data into the folder from the course site</p></li>
 </ul>
-<div id="b0905169" class="cell" data-execution_count="1">
+<div id="e80e10b6" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>** Set Path **</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    cd <span class="st">"/Users/egong@middlebury.edu/Library/CloudStorage/Dropbox/Middlebury/Course_Archieve/Spring_2026/ECON_0111/2_Assignments/Labs/Lab_5_LLN Review"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -286,7 +291,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="dataset-as-the-population" class="level2">
 <h2 class="anchored" data-anchor-id="dataset-as-the-population">Dataset as the Population</h2>
 <p>The dataset for this lab is “Lab_5_LLN.dta”. It has +6 MM individual observations, and two variables: income and if an individual is supporting Alexandria Ocasio-Cortez (AOC). Normally, datasets are typically “samples” from a population, but in this simulation, the dataset is the population.</p>
-<div id="cd678c44" class="cell" data-execution_count="2">
+<div id="8ee9de13" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span>  <span class="st">"Lab_5_LLN.dta"</span>, <span class="kw">clear</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -314,7 +319,7 @@ Sorted by:
 </div>
 </div>
 <p>Let’s randomly shuffle the population to simulate random sampling.</p>
-<div id="7e1bc95a" class="cell" data-execution_count="3">
+<div id="abf3fc67" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> <span class="dv">seed</span> 210</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> random = runiform()</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">sort</span> random</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -324,7 +329,7 @@ Sorted by:
 <h2 class="anchored" data-anchor-id="law-of-large-numbers-lln">Law of Large Numbers (LLN)</h2>
 <p>The Law of Large Numbers states that as the sample size increases, the sample statistics get “closer” to the population parameters. This makes intuitive sense: if you use a very large sample, we expect the sample mean to be a very good estimate of the population mean.</p>
 <p>We will use `income’. First, let’s obtain the population mean for income.</p>
-<div id="7923c69e" class="cell" data-execution_count="4">
+<div id="c0a452b6" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> income</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span> <span class="ot">list</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scalar</span> income_pop_mean = <span class="fu">r</span>(<span class="kw">mean</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -347,7 +352,7 @@ scalars:
 </div>
 <p>Note that we are using all +6 MM observations since we assume that the dataset represents the population.</p>
 <p>Now let’s start with a sample of n=1 and compare the sample mean to the population mean.</p>
-<div id="bd1f3349" class="cell" data-execution_count="5">
+<div id="c83cd41d" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> income <span class="kw">if</span> (<span class="dt">_n</span>&gt;=1 &amp; <span class="dt">_n</span>&lt;=1)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span> <span class="ot">list</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span> income_LLN = <span class="fu">r</span>(<span class="kw">mean</span>) , income_pop_mean, <span class="fu">r</span>(<span class="kw">mean</span>)-income_pop_mean</span>
@@ -387,7 +392,7 @@ r1        18000    39234.129   -21234.129</code></pre>
 </section>
 <section id="q3-using-the-code-below-fix-errors-and-the-ordering-so-that-it-becomes-a-loop-that-starts-with-a-sample-of-n2-obtains-the-sample-mean-the-population-mean-and-the-difference-and-then-adds-1-to-the-sample-size-n4.-the-loop-should-continue-until-it-reaches-n1000." class="level4">
 <h4 class="anchored" data-anchor-id="q3-using-the-code-below-fix-errors-and-the-ordering-so-that-it-becomes-a-loop-that-starts-with-a-sample-of-n2-obtains-the-sample-mean-the-population-mean-and-the-difference-and-then-adds-1-to-the-sample-size-n4.-the-loop-should-continue-until-it-reaches-n1000.">Q3: Using the code below, fix errors and the ordering so that it becomes a loop that starts with a sample of n=2, obtains the sample mean, the population mean, and the difference, and then adds 1 to the sample size (n=4). The loop should continue until it reaches n=1000.</h4>
-<div id="6e8ea8cc" class="cell" data-execution_count="6">
+<div id="c4e91726" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span> income_LLN = income_LLN \ <span class="fu">r</span>(<span class="kw">mean</span>), income_pop_mean, <span class="fu">r</span>(<span class="kw">mean</span>)-income_pop_mean</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> <span class="kw">more</span> <span class="kw">off</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> income <span class="kw">if</span> (<span class="dt">_n</span>&gt;=1 &amp; <span class="dt">_n</span>==<span class="ot">`i'</span>)</span>
@@ -397,7 +402,7 @@ r1        18000    39234.129   -21234.129</code></pre>
 </section>
 <section id="q4-using-the-following-code-see-if-you-can-generate-a-figure-based-on-the-simulation-that-shows-how-the-difference-between-the-sample-mean-and-population-mean-changes-as-the-sample-size-increases." class="level4">
 <h4 class="anchored" data-anchor-id="q4-using-the-following-code-see-if-you-can-generate-a-figure-based-on-the-simulation-that-shows-how-the-difference-between-the-sample-mean-and-population-mean-changes-as-the-sample-size-increases.">Q4: Using the following code, see if you can generate a figure based on the simulation that shows how the difference between the sample mean and population mean changes as the sample size increases.</h4>
-<div id="ac84e57d" class="cell" data-execution_count="7">
+<div id="e56ce15e" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">svmat</span> income_LLN</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> sample_size = <span class="dt">_n</span> <span class="kw">if</span> <span class="dt">_n</span>&lt;=1000</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>

@@ -157,6 +157,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./PS_0.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Problem Set 0: Getting Started with STATA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Lab_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 1 : Intro to STATA</span></a>
   </div>
 </li>
@@ -197,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Lab_9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Lab 9: Review</span></a>
+  <a href="./Lab_9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 9 : Review</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -283,7 +288,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Downloaded the necessary data into the folder from the course site</p></li>
 <li><p>Install the following using <code>ssc install spmap</code> and <code>ssc install shp2dta</code> and <code>ssc install mif2dta</code></p></li>
 </ul>
-<div id="27e9cad8" class="cell" data-execution_count="1">
+<div id="9ef24e9b" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>** Set Path **</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"/Users/egong@middlebury.edu/Library/CloudStorage/Dropbox/Middlebury/Course_Archieve/Spring_2026/ECON_0111/2_Assignments/Labs/Lab_6_Maps_Merge"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -291,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="current-population-survey-cps" class="level2">
 <h2 class="anchored" data-anchor-id="current-population-survey-cps">Current Population Survey (CPS)</h2>
 <p>The dataset “cps_wage_2021.dta” is a clean version of the CPS in 2021 and contains basic demographic information and wage data. It has 6,156 individual level observations from 50 states.</p>
-<div id="10176ab3" class="cell" data-execution_count="2">
+<div id="2c6f5078" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span>  cps_wage_2021.dta, <span class="kw">clear</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -331,7 +336,7 @@ Sorted by:
 </div>
 <section id="q1-examine-hourly-wages.-is-there-anything-that-looks-strange-what-do-you-make-of-it" class="level4">
 <h4 class="anchored" data-anchor-id="q1-examine-hourly-wages.-is-there-anything-that-looks-strange-what-do-you-make-of-it">Q1: Examine hourly wages. Is there anything that looks strange? What do you make of it?</h4>
-<div id="41f6904f" class="cell" data-execution_count="3">
+<div id="bd9fa06d" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> hourwage2, <span class="kw">detail</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -339,10 +344,10 @@ Sorted by:
 <section id="state-level-minimum-wages" class="level2">
 <h2 class="anchored" data-anchor-id="state-level-minimum-wages">State Level Minimum Wages</h2>
 <p>The dataset “state_minwage.dta” has data on whether state minimum wages are above or below the federal level. Federal minimum wage overrides state min wages. Thus states with min wages below the federal level will have min wages set to the federal level.</p>
-<div id="7d7f64c2" class="cell" data-execution_count="4">
+<div id="07b7ba8d" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span>  <span class="st">"state_minwage.dta"</span>, <span class="kw">clear</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="a82f4907" class="cell" data-execution_count="5">
+<div id="2fa39907" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -382,14 +387,14 @@ Sorted by: state</code></pre>
 <section id="q3-which-variable-should-we-use-to-link-or-merge-the-two-datasets-together" class="level4">
 <h4 class="anchored" data-anchor-id="q3-which-variable-should-we-use-to-link-or-merge-the-two-datasets-together">Q3: Which variable should we use to link or merge the two datasets together?</h4>
 <p>To do the merge, first start with the cps data which has individual-level observations.</p>
-<div id="b7e7d3d3" class="cell" data-execution_count="6">
+<div id="fb064e67" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> cps_wage_2021.dta, <span class="kw">clear</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="q4-using-the-menu-datacombine-datasetsmerge-two-datasets-see-if-you-can-figure-out-how-to-merge-the-state-level-min-wage-data." class="level4">
 <h4 class="anchored" data-anchor-id="q4-using-the-menu-datacombine-datasetsmerge-two-datasets-see-if-you-can-figure-out-how-to-merge-the-state-level-min-wage-data.">Q4: Using the menu Data&gt;Combine Datasets&gt;Merge two datasets , see if you can figure out how to merge the state-level min wage data.</h4>
 <p>The trick is that we need to do a many to one merge using <code>merge m:1</code> with the matching variable.</p>
-<div id="c3e30e15" class="cell" data-execution_count="7">
+<div id="49316ab7" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> cps_wage_2021.dta, <span class="kw">clear</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> <span class="fu">m</span>:1 state_fips <span class="kw">using</span> <span class="st">"state_minwage.dta"</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> <span class="dt">_merge</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -410,7 +415,7 @@ Sorted by: state</code></pre>
 </div>
 </div>
 <p>The results show that STATA was successful at matching all 6156 CPS observations to the state min wage dataset. After a merge, STATA generates a variable “_merge” and the values corresponding to the results of the merge. We want as many matches as possible “_merge==3”. We can drop “_merge” now. This is important if we want to merge this new dataset to another one.</p>
-<div id="306402e4" class="cell" data-execution_count="8">
+<div id="424d372c" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="dt">_merge</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -419,7 +424,7 @@ Sorted by: state</code></pre>
 </section>
 <section id="q6-show-the-joint-distribution-between-minimum-wage-laws-and-hourly-wages.-i-provide-code-below.-before-you-execute-the-code-see-if-you-can-figure-out-which-one-is-correct-and-why." class="level4">
 <h4 class="anchored" data-anchor-id="q6-show-the-joint-distribution-between-minimum-wage-laws-and-hourly-wages.-i-provide-code-below.-before-you-execute-the-code-see-if-you-can-figure-out-which-one-is-correct-and-why.">Q6: Show the joint distribution between minimum wage laws and hourly wages. I provide code below. Before you execute the code, see if you can figure out which one is correct and why.</h4>
-<div id="3c29a4d7" class="cell" data-execution_count="9">
+<div id="cf257050" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> hourwage2 minwage, column</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> (<span class="kw">mean</span>) minwage, <span class="bn">over</span>(hourwage2) <span class="bn">blabel</span>(<span class="bn">bar</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> (<span class="kw">mean</span>) hourwage2, <span class="bn">over</span>(minwage) <span class="bn">blabel</span>(<span class="bn">bar</span>)</span>
@@ -431,7 +436,7 @@ Sorted by: state</code></pre>
 <section id="individual-level-state-level-data" class="level2">
 <h2 class="anchored" data-anchor-id="individual-level-state-level-data">Individual Level =&gt; State Level Data</h2>
 <p>We have 6156 individual observations. Suppose we want to look at avg wages on a state-level. To “aggregate” the data we can use the <code>collapse</code> command. Take a look at the data using <code>des</code> and <code>sum</code> before running <code>collapse</code>.</p>
-<div id="721253df" class="cell" data-execution_count="10">
+<div id="6f3a6bd4" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">collapse</span> (<span class="kw">mean</span>) hourwage2 minwage, <span class="kw">by</span>(state_fips)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">save</span> state_wage.dta, <span class="kw">replace</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -445,12 +450,12 @@ Sorted by: state</code></pre>
 <section id="map-making" class="level2">
 <h2 class="anchored" data-anchor-id="map-making">Map Making</h2>
 <p>We can now generate a map to show the spatial variation in state minimum wages. The <code>spmap</code> command takes a variable and then uses a dataset “us_map_coordinates” that contains all of the boundaries for US states. The <code>id(state_fips)</code> option links our data to the map coordinates using the state FIPS code.</p>
-<div id="963e5ad1" class="cell" data-execution_count="11">
+<div id="95af3e87" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> state_wage.dta, <span class="kw">clear</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>spmap minwage <span class="kw">using</span> us_map_coordinates, id(state_fips)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Ah, Alaska and Hawaii make drawing the map challenging! Let’s drop those two states.</p>
-<div id="6bc649c5" class="cell" data-execution_count="12">
+<div id="95b4b635" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> state_fips==15</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> state_fips==2</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>spmap minwage <span class="kw">using</span> us_map_coordinates, id(state_fips)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -464,7 +469,7 @@ Sorted by: state</code></pre>
 </div>
 <section id="q8-before-running-the-code-see-if-you-can-predict-what-the-added-code-will-do.-note-the-allows-you-to-write-a-single-line-of-code-over-multiple-lines.-this-is-helpful-when-your-code-is-very-long." class="level4">
 <h4 class="anchored" data-anchor-id="q8-before-running-the-code-see-if-you-can-predict-what-the-added-code-will-do.-note-the-allows-you-to-write-a-single-line-of-code-over-multiple-lines.-this-is-helpful-when-your-code-is-very-long.">Q8: Before running the code, see if you can predict what the added code will do. Note the <code>///</code> allows you to write a single line of code over multiple lines. This is helpful when your code is very long.</h4>
-<div id="38b54c51" class="cell" data-execution_count="13">
+<div id="c4f398fd" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>spmap minwage <span class="kw">using</span> us_map_coordinates, id(state_fips)  <span class="co">///</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a> fcolor(Blues) <span class="co">///</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a> <span class="bn">legend</span>(<span class="kw">label</span>(2 <span class="st">"Below Fed Min Wage"</span>) <span class="kw">label</span>(3 <span class="st">"Above Fed Min Wage"</span>)) legtitle(<span class="st">"Legend"</span>) <span class="co">///</span></span>

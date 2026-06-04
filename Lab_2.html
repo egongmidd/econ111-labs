@@ -157,6 +157,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./PS_0.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Problem Set 0: Getting Started with STATA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Lab_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 1 : Intro to STATA</span></a>
   </div>
 </li>
@@ -197,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Lab_9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Lab 9: Review</span></a>
+  <a href="./Lab_9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 9 : Review</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -286,13 +291,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Open and save a DO file “Lab_2.do”</p></li>
 <li><p>Set Path</p></li>
 </ul>
-<div id="0028eae5" class="cell" data-execution_count="1">
+<div id="0659caf5" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    cd <span class="st">"/Users/egong@middlebury.edu/Library/CloudStorage/Dropbox/Middlebury/Course_Archieve/Spring_2026/ECON_0111/2_Assignments/Labs/Lab_2"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="open-and-view-the-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="open-and-view-the-dataset">Open and view the dataset</h2>
-<div id="3d072c4f" class="cell" data-execution_count="2">
+<div id="3cace075" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> lab_2.dta, <span class="kw">clear</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -345,7 +350,7 @@ heart_dise~e |      1,000        .209    .4067978          0          1</code></
 <section id="case-1-joint-distribution-of-two-continuous-variables" class="level2">
 <h2 class="anchored" data-anchor-id="case-1-joint-distribution-of-two-continuous-variables">Case 1: Joint Distribution of two continuous variables</h2>
 <p>Both “incwage” and “age” are continuous. How do we know?</p>
-<div id="a4045e01" class="cell" data-execution_count="3">
+<div id="3e403f98" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">histogram</span> incwage</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">histogram</span> age</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -355,11 +360,11 @@ heart_dise~e |      1,000        .209    .4067978          0          1</code></
 <section id="question-1-what-does-each-dot-represent-is-there-an-association-between-age-and-income" class="level4">
 <h4 class="anchored" data-anchor-id="question-1-what-does-each-dot-represent-is-there-an-association-between-age-and-income">Question 1: What does each dot represent? Is there an association between age and income?</h4>
 <p>Now look at the results screen. You will see code. You can copy and paste this to your DO file. If you don’t know the code, especially for graphs, you can always use the menu option, and then copy and paste the code.</p>
-<div id="472eb33e" class="cell" data-execution_count="4">
+<div id="bd49006c" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span>  (<span class="kw">scatter</span> incwage age)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>How can we summarize the association between age and income? We can use a linear regression line.</p>
-<div id="942af4d2" class="cell" data-execution_count="5">
+<div id="9f6c1373" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span>  (<span class="kw">scatter</span> incwage age ) (<span class="kw">lfit</span> incwage age)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">graph</span> <span class="kw">export</span>  <span class="st">"scatter_income_age.png"</span>, <span class="kw">replace</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -389,12 +394,12 @@ heart_dise~e |      1,000        .209    .4067978          0          1</code></
 <figcaption>Bargraph Income Black</figcaption>
 </figure>
 </div>
-<div id="bfab6d54" class="cell" data-execution_count="6">
+<div id="3c7c166e" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="bn">bar</span> (<span class="kw">mean</span>) incwage, <span class="bn">over</span>(Black) <span class="bn">blabel</span>(<span class="bn">bar</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span>  <span class="st">"bar_income_black.png"</span>, <span class="kw">replace</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Another useful graph is a box plot.</p>
-<div id="e14dbd2f" class="cell" data-execution_count="7">
+<div id="f728ad63" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> box incwage, <span class="bn">over</span>(Black)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">graph</span> <span class="kw">export</span> <span class="st">"income_Black.png"</span>, <span class="kw">replace</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -412,7 +417,7 @@ heart_dise~e |      1,000        .209    .4067978          0          1</code></
 <section id="question-5-plot-a-figure-that-shows-the-joint-distribution-of-heart_disease-and-black." class="level4">
 <h4 class="anchored" data-anchor-id="question-5-plot-a-figure-that-shows-the-joint-distribution-of-heart_disease-and-black.">Question 5: Plot a figure that shows the joint distribution of “heart_disease” and “Black”.</h4>
 <p>We can also create a cross-tab between heart disease and Black (the textbook uses “contingency table”).</p>
-<div id="4448f4a2" class="cell" data-execution_count="8">
+<div id="85612cd5" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> heart_disease Black</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> heart_disease Black, column</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -457,7 +462,7 @@ with heart |         Black
 <section id="exporting-tables" class="level2">
 <h2 class="anchored" data-anchor-id="exporting-tables">Exporting Tables</h2>
 <p>We’ve seen already how to export graphs using <code>graph export</code>. How about a table? We can install a user-written command that handles this. Typing <code>ssc install asdoc</code> in the command line will install the command <code>asdoc</code>. You can then use it in the following way:</p>
-<div id="ce600338" class="cell" data-execution_count="9">
+<div id="a6244847" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>asdoc <span class="kw">tab</span> heart_disease Black , column <span class="kw">save</span>(heart_disease_black.doc)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Check out the file and let me know what you think.</p>
@@ -476,7 +481,7 @@ with heart |         Black
 <section id="question-7-generate-a-variable-college-that-equals-one-if-a-person-has-a-college-degree-and-0-if-not.-this-is-known-as-an-indicator-variable." class="level4">
 <h4 class="anchored" data-anchor-id="question-7-generate-a-variable-college-that-equals-one-if-a-person-has-a-college-degree-and-0-if-not.-this-is-known-as-an-indicator-variable.">Question 7: Generate a variable “college” that equals one if a person has a college degree and 0 if not. This is known as an indicator variable.</h4>
 <p>Let’s see what values edu takes.</p>
-<div id="4a2d55db" class="cell" data-execution_count="10">
+<div id="a786cbfe" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> edu</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -491,11 +496,11 @@ Less than HS diploma |         94        9.40        9.40
 </div>
 </div>
 <p>But you will see that the following doesn’t work.</p>
-<div id="46f4aa00" class="cell" data-execution_count="11">
+<div id="6f29b4ac" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> college = 1 <span class="kw">if</span> edu==<span class="st">"College Degree"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Why? There are some variables like “edu” in the dataset that take numeric values BUT have “labels” over these values.</p>
-<div id="07a406e3" class="cell" data-execution_count="12">
+<div id="6041f701" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> edu</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span> edu</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="ot">list</span> edu</span>
@@ -528,7 +533,7 @@ edu:
 </div>
 <p>The variable “edu” has a value label “edu” (confusing!). This label assigns a label of “less than a HS diploma” to 1, “HS diploma” to 2, and “College Degree” to a 3.</p>
 <p>To generate the “college” variable, we should do the following.</p>
-<div id="bfac3f66" class="cell" data-execution_count="13">
+<div id="751283dd" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> college = 1 <span class="kw">if</span> edu==3</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> college = 0 <span class="kw">if</span> edu&gt;=1 &amp; edu&lt;=2</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> college</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -545,7 +550,7 @@ edu:
 </div>
 </div>
 <p>And finally, there’s an alternative way of doing this.</p>
-<div id="31598f66" class="cell" data-execution_count="14">
+<div id="e96176f2" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> college2 = (edu==3)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> college2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">

@@ -157,6 +157,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./PS_0.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Problem Set 0: Getting Started with STATA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Lab_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 1 : Intro to STATA</span></a>
   </div>
 </li>
@@ -197,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Lab_9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Lab 9: Review</span></a>
+  <a href="./Lab_9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 9 : Review</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -287,7 +292,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Created a folder “Lab 8”</p></li>
 <li><p>Downloaded the necessary data into the folder from the course site</p></li>
 </ul>
-<div id="4c9ec819" class="cell" data-execution_count="1">
+<div id="76e61966" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>** Set Path **</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"/Users/egong@middlebury.edu/Library/CloudStorage/Dropbox/Middlebury/Course_Archieve/Spring_2026/ECON_0111/2_Assignments/Labs/Lab_8_ttest_2/"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -295,7 +300,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="voting-id-laws" class="level2">
 <h2 class="anchored" data-anchor-id="voting-id-laws">Voting ID Laws</h2>
 <p>Ballotpedia tracks voter id laws (https://ballotpedia.org/Voter_identification_laws_by_state). Let’s import the excel sheet.</p>
-<div id="8386dc15" class="cell" data-execution_count="2">
+<div id="24389728" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>import excel <span class="st">"voter_id.xlsx"</span>, sheet(<span class="st">"data"</span>) firstrow <span class="kw">clear</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -333,7 +338,7 @@ non_photo_id |         11           1           0          1          1
 <p>11 states have laws requiring some form of non-photo id to vote and 24 states require photo id to vote. We first need to clean the variables.</p>
 <section id="q1-predict-what-the-following-code-will-do-and-think-about-why-we-are-doing-it.-then-run-it." class="level4">
 <h4 class="anchored" data-anchor-id="q1-predict-what-the-following-code-will-do-and-think-about-why-we-are-doing-it.-then-run-it.">Q1: Predict what the following code will do and think about why we are doing it. Then run it.</h4>
-<div id="b07fa11c" class="cell" data-execution_count="3">
+<div id="647fff45" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> non_photo_id = 0 <span class="kw">if</span>  non_photo_id==.</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">label</span> <span class="kw">var</span> non_photo_id <span class="st">"==1 if id required"</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> photo_id = 0 <span class="kw">if</span> photo_id==.</span>
@@ -353,7 +358,7 @@ file voter_id.dta saved</code></pre>
 <p>The CPS adds additional questions about voting behavior in their Nov surveys during national election years (Presidential and mid-terms for Congress).</p>
 <p><img src="images/Lab_8/CPS_1.png" class="img-fluid" style="width:30.0%" alt="CPS Voter Supplement"> <img src="images/Lab_8/CPS_2.png" class="img-fluid" style="width:50.0%" alt="Available Years"></p>
 <p>Let’s open the data.</p>
-<div id="2ef10942" class="cell" data-execution_count="4">
+<div id="bae28bed" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> cps_vote.dta, <span class="kw">clear</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span> voted</span>
@@ -384,7 +389,7 @@ not in universe |     71,590       28.17      100.00
 <section id="q2-why-do-you-think-there-are-so-many-individuals-who-are-not-in-universe" class="level4">
 <h4 class="anchored" data-anchor-id="q2-why-do-you-think-there-are-so-many-individuals-who-are-not-in-universe">Q2: Why do you think there are so many individuals who are “not in universe”?</h4>
 <p>Generate an indicator if you voted in the last Nov election if eligible.</p>
-<div id="b96c57f1" class="cell" data-execution_count="5">
+<div id="166b4bfb" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="ot">list</span> VOTED</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> voted_last = 1 <span class="kw">if</span> voted==2</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> voted_last = 0 <span class="kw">if</span> voted==1</span>
@@ -405,7 +410,7 @@ not in universe |     71,590       28.17      100.00
 </section>
 <section id="q3-review-the-following-code-that-is-used-to-clean-the-dataset-and-generate-new-variables.-predict-what-the-code-will-do-and-the-rationale.-you-can-then-copy-and-paste-it-from-the-do-file-lab_8_clean_cps.-then-run-it." class="level4">
 <h4 class="anchored" data-anchor-id="q3-review-the-following-code-that-is-used-to-clean-the-dataset-and-generate-new-variables.-predict-what-the-code-will-do-and-the-rationale.-you-can-then-copy-and-paste-it-from-the-do-file-lab_8_clean_cps.-then-run-it.">Q3: Review the following code that is used to clean the dataset and generate new variables. Predict what the code will do and the rationale. You can then copy and paste it from the DO file “Lab_8_Clean_CPS”. Then run it.</h4>
-<div id="31ecfe11" class="cell" data-execution_count="6">
+<div id="74f713db" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> elderly = 1 <span class="kw">if</span> age&gt;=65 &amp; age&lt;.</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> elderly = 0 <span class="kw">if</span> age&lt;65</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">var</span> elderly <span class="st">"==1 if +65 or older"</span></span>
@@ -577,7 +582,7 @@ file cps_vote_clean.dta saved</code></pre>
 </div>
 </div>
 <p>We can now merge the data with the state-level voter id data.</p>
-<div id="23aa855a" class="cell" data-execution_count="7">
+<div id="ba4be175" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> cps_vote_clean.dta, <span class="kw">clear</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">rename</span> statefip state_fips</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> <span class="fu">m</span>:1 state_fips <span class="kw">using</span> voter_id</span>
@@ -598,7 +603,7 @@ file cps_vote_idlaw.dta saved</code></pre>
 <section id="hypothesis-testing-t-tests" class="level2">
 <h2 class="anchored" data-anchor-id="hypothesis-testing-t-tests">Hypothesis Testing (t-tests)</h2>
 <p>We can see if there is a difference in voting between states with voter id laws and those without.</p>
-<div id="1a106ea9" class="cell" data-execution_count="8">
+<div id="baafd6fe" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">prtest</span> voted_last, <span class="kw">by</span>(photo_id)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">ttest</span> voted_last, <span class="kw">by</span>(photo_id)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -641,7 +646,7 @@ H0: diff = 0                                     Degrees of freedom =   154712
 <section id="q4-whats-the-difference-with-the-results-from-prtest-vs-ttest" class="level4">
 <h4 class="anchored" data-anchor-id="q4-whats-the-difference-with-the-results-from-prtest-vs-ttest">Q4: What’s the difference with the results from <code>prtest</code> vs <code>ttest</code>?</h4>
 <p>Now let’s do the same t-test for all 18-year olds (who are just able to vote).</p>
-<div id="2ed790cb" class="cell" data-execution_count="9">
+<div id="42fa9742" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ttest</span> voted_last <span class="kw">if</span> age==18, <span class="kw">by</span>(photo_id)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -673,7 +678,7 @@ H0: diff = 0                                     Degrees of freedom =     2099
 </figure>
 </div>
 <p>Finally, let’s compare voting for 18-year olds who live in Delaware (non-photo id state) to those in Rhode Island (photo id state). Note that the state fips for Delaware and Rhode Island is 10 and 44 respectively.</p>
-<div id="510f35bb" class="cell" data-execution_count="10">
+<div id="c47af1e9" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ttest</span> voted_last <span class="kw">if</span> age==18 &amp; (state_fips==44 | state_fips==10) , <span class="kw">by</span>(photo_id)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -703,7 +708,7 @@ H0: diff = 0                                     Degrees of freedom =       43
 <section id="presenting-hypothesis-test-results" class="level2">
 <h2 class="anchored" data-anchor-id="presenting-hypothesis-test-results">Presenting Hypothesis Test Results</h2>
 <p>The results generated by a t-test are not visually stunning.</p>
-<div id="b5ec9ab2" class="cell" data-execution_count="11">
+<div id="13186a53" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ttest</span> voted_last, <span class="kw">by</span>(photo_id)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -728,7 +733,7 @@ H0: diff = 0                                     Degrees of freedom =   154712
 <p>A better way to present these results is in the following code block.</p>
 <section id="q7-can-you-predict-what-will-happen-in-the-following-lines-before-executing-it" class="level4">
 <h4 class="anchored" data-anchor-id="q7-can-you-predict-what-will-happen-in-the-following-lines-before-executing-it">Q7: Can you predict what will happen in the following lines before executing it?</h4>
-<div id="a9b15beb" class="cell" data-execution_count="12">
+<div id="4b58c66c" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ttest</span> voted_last, <span class="kw">by</span>(photo_id)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span> <span class="ot">list</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span> results = <span class="fu">r</span>(mu_1), <span class="fu">r</span>(mu_1)-1.96*(<span class="fu">r</span>(sd_1)/<span class="fu">sqrt</span>(<span class="fu">r</span>(N_1))) , <span class="fu">r</span>(mu_1)+1.96*(<span class="fu">r</span>(sd_1)/<span class="fu">sqrt</span>(<span class="fu">r</span>(N_1)))</span>
@@ -768,7 +773,7 @@ H0: diff = 0                                     Degrees of freedom =   154712
 <p>To assess these confounders, we can do ttests which compares the means for each variable (elderly, female) between states with and without photo id laws. We generate a table with these results and it is commonly known as a “balance table”. The reason? Ideally, we would like all possible confounders to be balanced or similar between the two types of states. This would assuage concerns that the differences are due to these confounders.</p>
 <section id="balance-table" class="level3">
 <h3 class="anchored" data-anchor-id="balance-table">Balance Table</h3>
-<div id="6ca17e85" class="cell" data-execution_count="13">
+<div id="347caa49" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ttest</span> elderly, <span class="kw">by</span>(photo_id)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span> <span class="ot">list</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span> balance =  <span class="fu">r</span>(mu_1) , <span class="fu">r</span>(mu_2), <span class="fu">r</span>(mu_2)-<span class="fu">r</span>(mu_1), <span class="fu">r</span>(<span class="kw">p</span>)</span>
@@ -872,7 +877,7 @@ balance[3,4]
 citizen_US    .92962694    .95456434     .0249374    1.21e-157</code></pre>
 </div>
 </div>
-<div id="76e70828" class="cell" data-execution_count="14">
+<div id="d046b237" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>putexcel <span class="kw">set</span> balance.xlsx, sheet(table_1) <span class="kw">replace</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>     putexcel A1 = <span class="fu">matrix</span>(balance), names</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1301,8 +1306,8 @@ citizen_US    .92962694    .95456434     .0249374    1.21e-157</code></pre>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Lab_9.html" class="pagination-link" aria-label="Lab 9: Review">
-        <span class="nav-page-text"><span class="chapter-title">Lab 9: Review</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Lab_9.html" class="pagination-link" aria-label="ECON 111 - Lab 9 : Review">
+        <span class="nav-page-text"><span class="chapter-title">ECON 111 - Lab 9 : Review</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

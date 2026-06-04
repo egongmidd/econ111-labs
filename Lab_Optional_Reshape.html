@@ -156,6 +156,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./PS_0.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Problem Set 0: Getting Started with STATA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Lab_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 1 : Intro to STATA</span></a>
   </div>
 </li>
@@ -196,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Lab_9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Lab 9: Review</span></a>
+  <a href="./Lab_9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ECON 111 - Lab 9 : Review</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -277,7 +282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Created a folder “Lab_Reshape”</p></li>
 <li><p>Downloaded the necessary data into the folder from the course site</p></li>
 </ul>
-<div id="49a300cc" class="cell" data-execution_count="1">
+<div id="395a008f" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>** Set Path **</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"/Users/egong@middlebury.edu/Library/CloudStorage/Dropbox/Middlebury/Course_Archieve/Spring_2026/ECON_0111/2_Assignments/Labs/Lab_Optional_Reshape/"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -294,7 +299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="state-level-cps-wage-data" class="level2">
 <h2 class="anchored" data-anchor-id="state-level-cps-wage-data">State-Level CPS Wage Data</h2>
 <p>The dataset “cps_state_wide.dta” contains state-level average hourly wages and the proportion of Black residents for 4 years: 2015, 2018, 2021, and 2022. The data is in <strong>wide</strong> format.</p>
-<div id="2a30d36f" class="cell" data-execution_count="2">
+<div id="d7118043" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> cps_state_wide.dta, <span class="kw">clear</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -323,7 +328,7 @@ Sorted by: state_fips</code></pre>
 </div>
 </div>
 <p>Notice that each variable has a year suffix: <code>hourwage2015</code>, <code>hourwage2018</code>, etc. Each row is a state with 51 total observations.</p>
-<div id="4fb1afa6" class="cell" data-execution_count="3">
+<div id="02740da8" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> state_fips hourwage2015 hourwage2018 hourwage2021 hourwage2022 <span class="kw">in</span> 1/10</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -347,13 +352,13 @@ Sorted by: state_fips</code></pre>
 <section id="q1-this-data-is-in-wide-format.-use-reshape-long-to-convert-it-to-long-format-so-that-each-row-is-a-state-year-observation.-how-many-observations-do-you-have-after-reshaping-what-does-the-variable-year-represent" class="level4">
 <h4 class="anchored" data-anchor-id="q1-this-data-is-in-wide-format.-use-reshape-long-to-convert-it-to-long-format-so-that-each-row-is-a-state-year-observation.-how-many-observations-do-you-have-after-reshaping-what-does-the-variable-year-represent">Q1: This data is in “wide” format. Use <code>reshape long</code> to convert it to “long” format so that each row is a state-year observation. How many observations do you have after reshaping? What does the variable <code>year</code> represent?</h4>
 <p>Hint: The syntax is <code>reshape long hourwage black, i(state_fips) j(year)</code>. The <code>i()</code> option specifies the unit identifier and <code>j()</code> specifies the time variable that STATA will create.</p>
-<div id="03690582" class="cell" data-execution_count="4">
+<div id="c0ab44ae" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">reshape</span> <span class="kw">long</span> hourwage <span class="bn">black</span>, i(state_fips) j(<span class="fu">year</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">des</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>browse</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>After reshaping, you should have 204 observations (51 states x 4 years).</p>
-<div id="d82162dd" class="cell" data-execution_count="5">
+<div id="7af1c543" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> <span class="fu">year</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> hourwage</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -361,7 +366,7 @@ Sorted by: state_fips</code></pre>
 <section id="q2-how-have-average-hourly-wages-changed-over-time-what-is-the-mean-hourly-wage-in-each-year" class="level4">
 <h4 class="anchored" data-anchor-id="q2-how-have-average-hourly-wages-changed-over-time-what-is-the-mean-hourly-wage-in-each-year">Q2: How have average hourly wages changed over time? What is the mean hourly wage in each year?</h4>
 <p>Now save the long dataset and merge it with the state-level affirmative action data.</p>
-<div id="6525f319" class="cell" data-execution_count="6">
+<div id="be8b84d9" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">save</span> cps_state_long.dta, <span class="kw">replace</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> <span class="fu">m</span>:1 state_fips <span class="kw">using</span> affirm_action.dta</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> <span class="dt">_merge</span></span>
@@ -371,7 +376,7 @@ Sorted by: state_fips</code></pre>
 <section id="q3-using-the-2022-data-compare-average-hourly-wages-between-states-that-banned-affirmative-action-and-states-that-did-not.-present-the-results-using-a-95-confidence-interval-bar-chart." class="level4">
 <h4 class="anchored" data-anchor-id="q3-using-the-2022-data-compare-average-hourly-wages-between-states-that-banned-affirmative-action-and-states-that-did-not.-present-the-results-using-a-95-confidence-interval-bar-chart.">Q3: Using the 2022 data, compare average hourly wages between states that banned affirmative action and states that did not. Present the results using a 95% confidence interval bar chart.</h4>
 <p>Hint: Keep only year 2022 observations, then follow the same approach from Lab 7 (use <code>mean</code>, matrices, and <code>coefplot</code>).</p>
-<div id="4eb55e1e" class="cell" data-execution_count="7">
+<div id="218bc885" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span> <span class="kw">if</span> <span class="fu">year</span>==2022</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">mean</span> hourwage <span class="kw">if</span> banned==0</span>
@@ -392,7 +397,7 @@ Sorted by: state_fips</code></pre>
 </section>
 <section id="q4-run-a-t-test-comparing-hourly-wages-between-states-that-banned-affirmative-action-and-those-that-did-not-using-the-2022-data.-what-is-the-t-statistic-and-the-p-value-what-do-you-conclude" class="level4">
 <h4 class="anchored" data-anchor-id="q4-run-a-t-test-comparing-hourly-wages-between-states-that-banned-affirmative-action-and-those-that-did-not-using-the-2022-data.-what-is-the-t-statistic-and-the-p-value-what-do-you-conclude">Q4: Run a t-test comparing hourly wages between states that banned affirmative action and those that did not (using the 2022 data). What is the t-statistic and the p-value? What do you conclude?</h4>
-<div id="5e6ecd2f" class="cell" data-execution_count="8">
+<div id="f6f906f1" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">ttest</span> hourwage, <span class="kw">by</span>(banned)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
